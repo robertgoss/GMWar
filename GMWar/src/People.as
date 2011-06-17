@@ -47,7 +47,10 @@ package
 			//else continue current action
 			
 			x += speed;
-			if (x >= 800) dead = true;
+			if (x >= 800) 
+			{
+				dead = true;
+			}
 		}
 		
 		public function IsDead():Boolean

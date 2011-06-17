@@ -20,6 +20,7 @@ package
 			{				
 				addWave();
 			}
+			removeDeadPeople();
 		}
 		
 		public function addWave():void
@@ -30,9 +31,17 @@ package
 			}
 		}
 		
-		public function removePeople():void
+		public function removeDeadPeople():void
 		{
-			
+			var temp:Array;
+			FP.world.getClass(People, temp);
+			for each (var person in temp) 
+			{
+				if (person.IsDead)
+				{
+					FP.world.remove(person);
+				}
+			}
 		}
 
         public static function breed(xPos:int,yPos:int,p1:People,p2:People):People
