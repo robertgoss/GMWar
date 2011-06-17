@@ -19,7 +19,9 @@ package
 
         public override function update():void
         {
-
+            super.update()
+            peopleMgr.update()
+            trapMrg.update()
         }
 		
 	}
