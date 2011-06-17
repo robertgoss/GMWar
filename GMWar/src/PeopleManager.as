@@ -44,6 +44,24 @@ package
 			}
 		}
 
+        public function between(x1:int,x2:int):Array
+        {
+            var temp:Array = [];
+            var between:Array = []
+			FP.world.getClass(People, temp);
+			for each (var person:People in temp) 
+			{
+                if(person.x >= x1)
+                {
+                    if(person.x <= x2)
+                    {
+                        between.push(person)
+                    }
+                }
+            }
+            return between;
+        }
+
         public static function breed(xPos:int,yPos:int,p1:People,p2:People):People
         {
             return new People(xPos,yPos);

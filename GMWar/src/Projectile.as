@@ -1,12 +1,13 @@
 package  
 {
+    import net.flashpunk.FP;
     import net.flashpunk.Entity;
 
 	/**
 	 * ...
 	 * @author David
 	 */
-	public class Projectile extends Entity
+	public class Projectile
 	{
         public var damage:Damage;
         public var coolOff:int;
@@ -36,10 +37,14 @@ package
 
         public function fire():void
         {
-            var targets:Array = (FP.world as Main).peopleMgr.between(x-range,x+range)
+            var targets:Array = (FP.world as Environment).peopleMgr.between(parent.x-range,parent.x+range)
+            if(targets.length == 0)
+            {
+                return;
+            }
             for(var i:int=0;i<numFire;i++)
             {
-                var target = targets[FP.rand(target.length)] as People
+                var target:People = targets[FP.rand(targets.length)] as People
                 target.addDamage(damage);
             }
         }
