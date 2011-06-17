@@ -7,14 +7,14 @@ package
 		
 		[Embed(source = 'Soldier.bmp')]
 		private const PLAYER:Class;
-		private dead:Boolean;
+		private var dead:Boolean;
 		
 		
-		public function People() 
+		public function People(xPos:int = 0, yPos:int = 200) 
 		{
 			graphic = image;
-			x = 0;
-			y = 300;
+			x = xPos;
+			y = yPos;
 			dead = false;
 		}
 		
