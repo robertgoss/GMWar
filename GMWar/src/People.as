@@ -55,6 +55,11 @@ package
 		{
 			return dead;
 		}
+
+        public static function breed(xPos:int,yPos:int,People p1,People p2):People
+        {
+            return People(xPos,yPos);
+        }
 		
 	}
 	
