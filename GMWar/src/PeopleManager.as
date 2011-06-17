@@ -20,6 +20,7 @@ package
 			{				
 				addWave();
 			}
+			removeDeadPeople();
 		}
 		
 		public function addWave():void
@@ -30,9 +31,17 @@ package
 			}
 		}
 		
-		public function removePeople():void
+		public function removeDeadPeople():void
 		{
-			
+			var temp:People;
+			FP.world.getClass(People, temp);
+			for each (var person in temp) 
+			{
+				if (person.IsDead)
+				{
+					FP.world.remove(person);
+				}
+			}
 		}
 	}
 
