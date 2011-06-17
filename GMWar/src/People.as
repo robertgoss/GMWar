@@ -5,7 +5,7 @@ package
 	public class People extends Entity
 	{
 		
-		[Embed(source = 'Soldier.bmp')]
+		[Embed(source = 'Soldier.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
 		private var dead:Boolean;
@@ -14,10 +14,8 @@ package
 		private var speed:int;
 		private var climb:int;
 		private var armour:int;
+		private var health:Number;
 		//Resistance
-		
-		private var dead:Boolean;
-		
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -27,7 +25,7 @@ package
 			dead = false;
 			
 			//Normal person set-up
-			speed = 0.2;
+			speed = 1;
 			
 			flying = 0;
 			climb = 0;
