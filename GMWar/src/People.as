@@ -12,14 +12,16 @@ package
 		
 		public function People() 
 		{
+			graphic = image;
 			x = 0;
 			y = 300;
 			dead = false;
 		}
 		
-		public Update()
+		override public function update():void
 		{
 			x += 0.2;
+			if (x >= 800) dead = true;
 		}
 		
 		public function IsDead():Boolean
