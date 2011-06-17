@@ -1,10 +1,10 @@
 package  
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Image;
 	
 	public class People extends Entity
 	{
-		
 		[Embed(source = 'Soldier.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
