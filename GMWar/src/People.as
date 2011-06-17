@@ -1,5 +1,6 @@
 package  
 {
+    import net.flashpunk.FP;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	
@@ -16,6 +17,7 @@ package
 		private var armour:int;
 		private var health:Number;
 		//Resistance
+        private var damages:Array;
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -55,6 +57,12 @@ package
             //Get current floor
             y = (FP.world as Environment).floorHieght(x);
 		}
+
+        public function addDamage(damage:Damage):void
+        {
+            damage.target = this;
+            damages.push(damage)
+        }
 		
 		public function IsDead():Boolean
 		{

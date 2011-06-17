@@ -35,9 +35,9 @@ package
 		{
 			var temp:Array;
 			FP.world.getClass(People, temp);
-			for each (var person in temp) 
+			for each (var person:People in temp) 
 			{
-				if (person.IsDead)
+				if (person.IsDead())
 				{
 					FP.world.remove(person);
 				}
