@@ -15,6 +15,8 @@ package
 		{
 			peopleMgr = new PeopleManager();
             trapMgr = new TrapManager(); 
+            //Add Floor
+            
 		}
 
         public override function update():void
@@ -22,6 +24,11 @@ package
             super.update()
             peopleMgr.update()
             trapMgr.update()
+        }
+
+        public function floorHieght(x:int):int
+        {
+            return 200;
         }
 		
 	}
