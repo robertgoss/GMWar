@@ -23,6 +23,11 @@ package
             peopleMgr.update()
             trapMgr.update()
         }
+
+        public floorHieght(x:int):int
+        {
+            return 200;
+        }
 		
 	}
 

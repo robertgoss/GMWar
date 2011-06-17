@@ -51,6 +51,9 @@ package
 			{
 				dead = true;
 			}
+
+            //Get current floor
+            y = (FP.world as Environment).floorHieght(x);
 		}
 		
 		public function IsDead():Boolean
