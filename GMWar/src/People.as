@@ -16,6 +16,9 @@ package
 		private var armour:int;
 		//Resistance
 		
+		private var dead:Boolean;
+		
+		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
 			graphic = image;
