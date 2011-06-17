@@ -17,7 +17,7 @@ package
             trapMgr = new TrapManager(); 
 		}
 
-        public override function update()
+        public override function update():void
         {
 
         }
