@@ -18,22 +18,36 @@ package
         public function addTrap(trap:Trap):void
         {
             FP.world.add(trap);
+            traps.push(trap);
         }
 
         public function removeTrap(trap:Trap):void
         { 
 		    FP.world.remove(trap);
+            getTraps();
 	    }
 
-        public function update():void
+        private function getTraps():void
         {
             traps = new Array();
             FP.world.getClass(Trap,traps);
         }
 
+        public function update():void
+        {
+            getTraps();
+        }
+
         public function trapAt(y:int):Trap
         {
-            return new Trap();
+            for each(var trap:Trap in traps)
+            {
+                if( trap.isIn(y) )
+                {
+                    return trap
+                }
+            }
+            return null;
         }
     }
 
