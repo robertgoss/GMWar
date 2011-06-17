@@ -19,6 +19,7 @@ package
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
+			image.scale = 0.2;
 			graphic = image;
 			x = xPos;
 			y = yPos;
