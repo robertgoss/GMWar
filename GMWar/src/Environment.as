@@ -21,7 +21,7 @@ package
         {
             super.update()
             peopleMgr.update()
-            trapMrg.update()
+            trapMgr.update()
         }
 		
 	}
