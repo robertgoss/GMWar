@@ -27,17 +27,17 @@ package
 		{
 			for (var i : int = 0; i < 10; i++)
 			{
-				FP.world.add(new People(FP.rand(11) - 10));
+				FP.world.add(new People(FP.rand(101) - 100));
 			}
 		}
 		
 		public function removeDeadPeople():void
 		{
-			var temp:Array;
+			var temp:Array = [];
 			FP.world.getClass(People, temp);
-			for each (var person in temp) 
+			for each (var person:People in temp) 
 			{
-				if (person.IsDead)
+				if (person.IsDead())
 				{
 					FP.world.remove(person);
 				}
