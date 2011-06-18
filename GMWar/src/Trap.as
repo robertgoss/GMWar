@@ -50,6 +50,10 @@ package
 
         public override function update():void
         {
+            if((FP.world as Environment).paused)
+            {
+                
+            }
             super.update()
             if(projectile!=null)
             {

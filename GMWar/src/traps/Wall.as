@@ -1,6 +1,6 @@
 package traps
 {
-import net.flashpunk.Entity;
+    import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Wall extends Trap
     {

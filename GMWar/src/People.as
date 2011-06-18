@@ -39,6 +39,8 @@ package
 
         public var xTrue:Number;
         private var yTrue:Number;
+
+        public var lastpaused:Boolean;
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -65,6 +67,7 @@ package
 			//Norm person set-up
 			speed = 1;
 			
+            lastpaused = false;
 			flyingProp = 0;
 			climbProp = 0;
 			armour = 0;
@@ -141,9 +144,37 @@ package
             }
             return gSpeed;
         }
+    
+        public function flipAni():void
+        {
+            if(imageRun.rate==0)
+            {
+                imageRun.rate=1;
+                imageClimb.rate=1;
+                imageFall.rate=1;
+            }else
+            {
+                imageRun.rate=0;
+                imageClimb.rate=0;
+                imageFall.rate=0;
+            }
+        }
 		
 		override public function update():void
 		{
+            var paused:Boolean = (FP.world as Environment).paused
+            if(paused!=lastpaused)
+            {
+                lastpaused = paused;
+                flipAni()
+            }
+
+            if(paused)
+            {
+                 return;
+            }
+
+              
 			//Check if decsion is needed
 			//Make decsion if needed
 			//else continue current action
