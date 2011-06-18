@@ -8,17 +8,17 @@ package
 	 */
 	public class PeopleManager 
 	{
-        private var breedingPool:Array
+        private var breedingPool:Array;
         private var currentPool:Array;
         		
 		public function PeopleManager() 
 		{
-			breedingPool = []
+			breedingPool = [];
             for(var i:int=0;i<14;i++)
             {
-                breedingPool.push(randomSeq())
+                breedingPool.push(randomSeq());
             }
-            currentPool = []
+            currentPool = [];
 		}
 		
 		public function update():void
@@ -128,15 +128,16 @@ package
                         }
                     }
                 }
+				breedingPool = breedingPool.reverse();
+				breedingPool.pop();
+				breedingPool.pop();
+				breedingPool.pop();
+				breedingPool = breedingPool.reverse();
+				breedingPool.push(top[1]);
+				breedingPool.push(second[1]);
+				breedingPool.push(third[1]);
+				currentPool = [];
             }
-            breedingPool.reverse();
-            breedingPool.pop();
-            breedingPool.pop();
-            breedingPool.pop();
-            breedingPool.reverse();
-            breedingPool.push(top[1]);
-            breedingPool.push(second[1]);
-            breedingPool.push(third[1]);
         }
 
         public function breed(xPos:int):People
