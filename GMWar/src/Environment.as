@@ -1,6 +1,7 @@
 package  
 {
 	import net.flashpunk.World;
+    import traps.Tarpit;
 	
 	/**
 	 * ...
@@ -16,8 +17,13 @@ package
 			peopleMgr = new PeopleManager();
             trapMgr = new TrapManager(); 
             //Add Floor
-            
 		}
+
+        public override function begin():void
+        {
+            super.begin()
+            trapMgr.addTrap(new Tarpit(200));
+        }
 
         public override function update():void
         {
