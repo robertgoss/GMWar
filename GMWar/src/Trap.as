@@ -24,20 +24,71 @@ package
         public var rRap:int;
 		public var effects:Array;
 
+        public var xTrue:int;
+        public var yTrue:int;
+
         public function Trap(x_:int)
         {
-            x = x_;
-            y = (FP.world as Environment).floorHieght(x);
+            xTrue = x_;
+            yTrue = (FP.world as Environment).floorHieght(x);       
             lRap = 0;
             rRap = 0;
 			effects = new Array();
+
+            x = xTrue;
+            y = yTrue;
+
+            if(xTrue>800)
+            {
+                x = xTrue - 800;
+                y = yTrue + (FP.world as Environment).yDiff;
+            }
+        }
+
+        public function rel_x(x:int,y:int):int
+        {
+            if(x>800)
+            {
+                return x - 800
+            }else
+            {
+                return x
+            }
+        }
+
+        public function rel_y(x:int,y:int):int
+        {
+            if(x>800)
+            {
+                return y + (FP.world as Environment).yDiff
+            }else
+            {
+                return y
+            }
+        }
+        
+
+        public override function render():void
+        {
+            if(xTrue>750)
+            {
+                x = xTrue - 800;
+                y = yTrue + (FP.world as Environment).yDiff;
+                super.render()
+            }
+            if(xTrue<850)
+            {
+                x = xTrue
+                y = yTrue
+                super.render()
+            }
         }
         
         public function isIn(xTest:int):Boolean
         {
-            if(xTest>=x)
+            if(xTest>=xTrue)
             {
-                if(xTest<=(x+tWidth-rRap))
+                if(xTest<=(xTrue+tWidth-rRap))
                 {
                     return true;
                 }
