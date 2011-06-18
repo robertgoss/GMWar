@@ -42,7 +42,7 @@ package
 
         public var lastpaused:Boolean;
 		
-		public function People(xPos:int = 0, yPos:int = 200) 
+		public function People(xPos:int = 0, yPos:int = 250) 
 		{
 			imageRun.scale = 0.5;
 			imageRun.add("run", [ 0, 1, 2, 3, 4], 15, true);
