@@ -1,25 +1,24 @@
 package traps
 {
-import net.flashpunk.Entity;
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-    import Effects.Fire;
-    public class FirePit extends Trap
+    import Effects.Gas;
+	
+    public class PoisonTrap extends Trap
     {
         [Embed(source = '../Asserts/pit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
 		
-        public function FirePit(x_:int)
+        public function PoisonTrap(x_:int)
         {
 			graphic = image;
 			super(x_);
-
 			for (var i:int = 0; i < 8; i++)
 			{
-				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y))
+				effects.push(new Gas((x+5) + i*10, y))
 			}
-
-            damage = new Damage("FIRE",1,8,0,this);
+            damage = new Damage("Poison",1,8,0,this);
             price = 10;
             projectile = null;
             airbourne = false;
