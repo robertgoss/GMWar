@@ -6,22 +6,30 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
+    import net.flashpunk.utils.Draw;
 	
 	public class People extends Entity
 	{
-		[Embed(source = 'Asserts/runningNormal.png')]
-		private const PLAYER:Class;
-		private var image:Spritemap = new Spritemap(PLAYER, 74, 108); 
+		[Embed(source = 'Asserts/runningNormalInv.png')]
+		private const PLAYERRUN:Class;
+		private var imageRun:Spritemap = new Spritemap(PLAYERRUN, 74, 108); 
+        [Embed(source = 'Asserts/climbingInv.png')]
+		private const PLAYERCLIMB:Class;
+		private var imageClimb:Spritemap = new Spritemap(PLAYERCLIMB, 74, 108); 
+        [Embed(source = 'Asserts/fallingInv.png')]
+		private const PLAYERFALL:Class;
+		private var imageFall:Spritemap = new Spritemap(PLAYERFALL, 74, 108); 
 		private var dead:Boolean;
 		private var trapOn:int;
-		private var flying:int;
+		private var flyingProp:int;
 		private var speed:Number;
-		private var climb:int;
+		private var climbProp:int;
 		private var armour:int;
         private var armourF:Boolean;
         private var armourI:Boolean;
         private var armourP:Boolean;
 		private var health:Number;
+        private var moveState:String;
 		//Resistance
         private var damages:Array;
         private var xTrue:Number;
@@ -30,20 +38,29 @@ package
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
-			image.scale = 0.5;
-			image.add("run", [ 0, 1, 2, 3, 4], 15, true);
-            image.y = -54;
-			graphic = image;
+			imageRun.scale = 0.5;
+			imageRun.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            imageRun.y = -54;
+            imageRun.x = -36;
+            imageClimb.scale = 0.5;
+			imageClimb.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            imageClimb.y = -54;
+            imageClimb.x = -36;
+            imageFall.scale = 0.5;
+			imageFall.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            imageFall.y = -54;
+            imageFall.x = 0;
+			graphic = imageRun;
 			x = xPos as Number;
             xTrue = x as Number;
 			y = yPos;
 			dead = false;
 			
-			//Normal person set-up
+			//Norm person set-up
 			speed = 1;
 			
-			flying = 0;
-			climb = 0;
+			flyingProp = 0;
+			climbProp = 0;
 			armour = 0;
             armourF = false;
             armourI = false;
@@ -54,7 +71,8 @@ package
 
             curTrap = null;
 
-			image.play("run");
+			imageRun.play("run");
+            moveState = "Walking"
 		}
 		
 		private function AtEnd():void
@@ -76,9 +94,33 @@ package
                 curTrap = trapNew;
                 if(curTrap!=null)
                 {
-                    curTrap.onTrapFirst(this)
+                    if(stratagy())
+                    {
+                        curTrap.onTrapFirst(this);
+                    }
+                }else
+                {
+                    if(y!=floor())
+                    {
+                        startFalling();
+                    }
                 }
             }    
+        }
+
+        public function stratagy():Boolean
+        {
+            if(curTrap.blocking)
+            {
+                startClimbing();
+                return false;
+            }
+            return true;
+        }
+
+        public function floor():int
+        {
+            return (FP.world as Environment).floorHieght(x)
         }
 
         public function gameSpeed():Number
@@ -100,19 +142,99 @@ package
 			//Make decsion if needed
 			//else continue current action
             onTrap();
-			
-			x += gameSpeed();
+			move();
+
+            updateDamages();
+
+            //Get current floor
+		}
+
+        public function move():void
+        {
+            
+            if(moveState=="Walking")
+            {
+                    walking();
+            }
+            if(moveState=="Flying")
+            {
+                    flying();
+            }
+            if(moveState=="Climbing")
+            {
+                    climbing();
+            }
+            if(moveState=="Falling")
+            {
+                    falling();
+            }
+        }
+
+        public function walking():void
+        {
+            x += gameSpeed();
             //x += 0.5;
 			if (x >= 800) 
 			{
 				dead = true;
 			}
+        }
 
-            updateDamages();
+        public function startWalking():void
+        {
+            graphic = imageRun;
+            imageRun.play("run")
+            moveState = "Walking";
+        }
 
-            //Get current floor
-            //y = (FP.world as Environment).floorHieght(x);
-		}
+        public function climbing():void
+        {
+            y -= (speed + (speed*climbProp))*0.1;
+            if(y<(-curTrap.tHeight+floor()+50))
+            {
+                y = -curTrap.tHeight+floor()
+                startWalking();
+            }
+        }
+
+        public function startClimbing():void
+        {
+            graphic = imageClimb;
+            imageClimb.play("run")
+            moveState = "Climbing";
+        }
+
+        public function falling():void
+        {
+            y += (speed + (speed*climbProp))*0.1;
+            if(y>floor())
+            {
+                y = floor()
+                startWalking();
+            }
+        }
+
+        public function startFalling():void
+        {
+            graphic = imageFall;
+            imageFall.play("run")
+            moveState = "Falling";
+        }
+
+        public function flying():void
+        {
+
+        } 
+
+        public override function render():void
+        {
+            super.render();
+            if(moveState=="Climbing")
+            {
+                Draw.line(x-10,y-50,x,-curTrap.tHeight+floor())
+            }
+        }
+   
 
         public function harm(hurt:int,damage:Damage):void
         {

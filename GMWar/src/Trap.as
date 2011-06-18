@@ -18,6 +18,7 @@ package
         public var tWidth:int;
         public var scalibility:Boolean;
         public var conApply:Boolean;
+        public var blocking:Boolean;
 
         public function Trap(x_:int)
         {
@@ -27,9 +28,9 @@ package
         
         public function isIn(xTest:int):Boolean
         {
-            if(xTest>=(x-(tWidth/2)))
+            if(xTest>=x)
             {
-                if(xTest<=(x+(tWidth/2)))
+                if(xTest<=(x+tWidth))
                 {
                     return true;
                 }

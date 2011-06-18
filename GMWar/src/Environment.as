@@ -1,7 +1,9 @@
 package  
 {
 	import net.flashpunk.World;
+    import net.flashpunk.utils.Draw;
     import traps.Tarpit;
+    import traps.Wall;
 	
 	/**
 	 * ...
@@ -23,6 +25,7 @@ package
         {
             super.begin()
             trapMgr.addTrap(new Tarpit(200));
+            trapMgr.addTrap(new Wall(350));
         }
 
         public override function update():void
@@ -30,6 +33,14 @@ package
             super.update()
             peopleMgr.update()
             trapMgr.update()
+        }
+
+        public override function render():void
+        {
+            super.render()
+            Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
+            //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
+            //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }
 
         public function floorHieght(x:int):int

@@ -25,7 +25,7 @@ package
         {
             if(type=="SLOW")
             {
-                return 0.15
+                return 0.01 * damage
             }
             if(type=="ICE")
             {

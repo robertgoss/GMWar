@@ -14,7 +14,7 @@ package
 		public function Main():void 
 		{
 			super(800, 600);
-			FP.screen.color = 0xFFFFFF;
+			FP.screen.color = 0x222222;
 			FP.console.enable();
 			FP.world = new Environment();
 		}
