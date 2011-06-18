@@ -13,10 +13,12 @@ import net.flashpunk.Entity;
         {
 			graphic = image;
 			super(x_);
-            effects.push(new Fire(rel_x(x,y),rel_y(x,y)))
-            effects.push(new Fire(rel_x(x+20,y),rel_y(x+20,y)))
-            effects.push(new Fire(rel_x(x+40,y),rel_y(x+40,y)))
-            effects.push(new Fire(rel_x(x+60,y),rel_y(x+60,y)))
+
+			for (var i:int = 0; i < 8; i++)
+			{
+				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y))
+			}
+
             damage = new Damage("FIRE",1,8,0,this);
             price = 10;
             projectile = null;
