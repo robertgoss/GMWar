@@ -1,9 +1,12 @@
 package  
 {
+	import Effects.Poisoned;
 	import flash.display.SpreadMethod;
 	import flash.display.Sprite;
     import net.flashpunk.FP;
 	import net.flashpunk.Entity;
+	import net.flashpunk.Graphic;
+	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Draw;
@@ -41,6 +44,9 @@ package
         private var yTrue:Number;
 
         public var lastpaused:Boolean;
+		
+		private var poisonEffect:Poisoned;
+		private var isPoisoned:Boolean = false;
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -82,6 +88,8 @@ package
 
 			imageRun.play("run");
             moveState = "Walking"
+			
+			poisonEffect = new Poisoned(x-37, y-imageRun.scaledHeight, this);
 		}
 		
 		private function AtEnd():void
@@ -324,7 +332,17 @@ package
             if(damage.isPoison() && armourP)
             {
                 hurt = 0;
+				if (isPoisoned == false)
+				{
+					FP.world.add(poisonEffect);
+					isPoisoned == true;
+				}
             }
+			else if (isPoisoned == true )
+			{
+				FP.world.remove(poisonEffect);
+				isPoisoned = false;
+			}
             health = health - hurt;
 			
 			if (health <= 0)
