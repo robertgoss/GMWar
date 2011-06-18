@@ -4,7 +4,7 @@ import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Tarpit extends Trap
     {
-        [Embed(source = '../Asserts/tarpitInv.png')]
+        [Embed(source = '../Asserts/tarpit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
 		
