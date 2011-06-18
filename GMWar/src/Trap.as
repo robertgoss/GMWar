@@ -29,7 +29,7 @@ package
             y = (FP.world as Environment).floorHieght(x);
 			if (e != "None")
 			{
-				effect = new Effect(x, y, e);
+				effect = new Effect();
 				//addGraphic(effect.graphic);
 			}
             lRap = 0;
