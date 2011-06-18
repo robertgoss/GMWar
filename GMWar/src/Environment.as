@@ -4,6 +4,7 @@ package
     import net.flashpunk.utils.Draw;
     import traps.Tarpit;
     import traps.Wall;
+    import traps.TallWall;
 	
 	/**
 	 * ...
@@ -26,6 +27,7 @@ package
             super.begin()
             trapMgr.addTrap(new Tarpit(200));
             trapMgr.addTrap(new Wall(350));
+            trapMgr.addTrap(new Wall(400));
         }
 
         public override function update():void

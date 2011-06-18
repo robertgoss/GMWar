@@ -35,6 +35,8 @@ package
         private var xTrue:Number;
 
         private var curTrap:Trap;
+        
+        private var cableHeight:int;
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -54,6 +56,7 @@ package
 			x = xPos as Number;
             xTrue = x as Number;
 			y = yPos;
+
 			dead = false;
 			
 			//Norm person set-up
@@ -193,6 +196,7 @@ package
             if(y<(-curTrap.tHeight+floor()+50))
             {
                 y = -curTrap.tHeight+floor()
+                x += 25
                 startWalking();
             }
         }
@@ -210,6 +214,7 @@ package
             if(y>floor())
             {
                 y = floor()
+                x += 36;
                 startWalking();
             }
         }
@@ -219,6 +224,8 @@ package
             graphic = imageFall;
             imageFall.play("run")
             moveState = "Falling";
+            cableHeight = y;
+            y+=50;
         }
 
         public function flying():void
@@ -232,6 +239,10 @@ package
             if(moveState=="Climbing")
             {
                 Draw.line(x-10,y-50,x,-curTrap.tHeight+floor())
+            }
+            if(moveState=="Falling")
+            {
+                Draw.line(x,y-50,x+10,-cableHeight+floor())
             }
         }
    

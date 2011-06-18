@@ -2,21 +2,21 @@ package traps
 {
 import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-    public class Wall extends Trap
+    public class TallWall extends Trap
     {
-        [Embed(source = '../Asserts/sWall.png')]
+        [Embed(source = '../Asserts/lWall.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
         public function Wall(x_:int)
         {
             super(x_)
-            image.y = -120;
+            image.y = -150;
 			graphic = image;
             damage = null;
             price = 10;
             projectile = null;
             airbourne = false;
-            tHeight = 115;
+            tHeight = 150;
             tWidth = 10;
             scalibility = false;
             conApply = true;
