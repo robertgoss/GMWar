@@ -4,7 +4,7 @@ import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class FirePit extends Trap
     {
-        [Embed(source = '../Asserts/spikePit.png')]
+        [Embed(source = '../Asserts/pit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
 		
