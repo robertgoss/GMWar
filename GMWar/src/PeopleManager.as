@@ -27,7 +27,7 @@ package
 		{
 			for (var i : int = 0; i < 10; i++)
 			{
-				FP.world.add(new People(FP.rand(101) - 100));
+				FP.world.add(randomPerson(FP.rand(151)-150));
 			}
 		}
 		
@@ -60,6 +60,25 @@ package
                 }
             }
             return between;
+        }
+
+        public static function randomPerson(x:int):People
+        {
+            var seq:Array = []
+            var s:int = 0;
+            for(var i:int=0;i<8;i++)
+            {
+                seq[i] = FP.rand(11);
+                s += seq[i]
+            }   
+            for(i=0;i<8;i++)
+            {
+                trace(i,seq[i]);
+                seq[i] = seq[i] / s;
+            }
+            var person:People = new People(x)
+            person.setSeq(seq);
+            return person;
         }
 
         public static function breed(xPos:int,yPos:int,p1:People,p2:People):People

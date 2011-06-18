@@ -21,18 +21,17 @@ package
 		private var imageFall:Spritemap = new Spritemap(PLAYERFALL, 74, 108); 
 		private var dead:Boolean;
 		private var trapOn:int;
-		private var flyingProp:int;
-		private var speed:Number;
-		private var climbProp:int;
-		private var armour:int;
-        private var armourF:Boolean;
-        private var armourI:Boolean;
-        private var armourP:Boolean;
-		private var health:Number;
-        private var moveState:String;
+		public var flyingProp:int;
+		public var speed:Number;
+		public var climbProp:int;
+		public var armour:int;
+        public var armourF:Boolean;
+        public var armourI:Boolean;
+        public var armourP:Boolean;
+		public var health:Number;
+        public var moveState:String;
 		//Resistance
         private var damages:Array;
-        private var xTrue:Number;
 
         private var curTrap:Trap;
         
@@ -54,7 +53,6 @@ package
             imageFall.x = 0;
 			graphic = imageRun;
 			x = xPos as Number;
-            xTrue = x as Number;
 			y = yPos;
 
 			dead = false;
@@ -236,13 +234,14 @@ package
         public override function render():void
         {
             super.render();
+            //Draw.line(x,floor(),x,0,0xFFFFFF)
             if(moveState=="Climbing")
             {
-                Draw.line(x-10,y-50,x,-curTrap.tHeight+floor())
+                Draw.line(x-10,y-50,x,-curTrap.tHeight+floor(),0xFFFFFF)
             }
             if(moveState=="Falling")
             {
-                Draw.line(x,y-50,x+10,-cableHeight+floor())
+                Draw.line(x+10,y-50,x,cableHeight,0xFFFFFF)
             }
         }
    
@@ -294,7 +293,33 @@ package
 		{
 			return dead;
 		}
-		
+        
+        public function setSeq(seq:Array):void
+        {
+            var person:People = this
+            person.flyingProp = seq[0];
+		    person.speed = seq[1]*0.1;
+		    person.climbProp = seq[2];
+		    person.armour = seq[3];
+            person.health = 100 + 10*seq[4]
+            person.armourF = seq[5];
+            person.armourI = seq[6];
+            person.armourP = seq[7];
+        }
+
+        public function getSeq():Array
+		{
+            var seq:Array = []
+            seq[0] = flyingProp;
+            seq[1] = speed*10;
+            seq[2] = climbProp;
+            seq[3] = armour;
+            seq[4] = (health-100)*0.1;
+            seq[5] = armourF;
+            seq[6] = armourI;
+            seq[7] = armourP;
+            return seq;
+        }
 	}
 	
 }

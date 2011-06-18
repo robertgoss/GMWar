@@ -27,7 +27,7 @@ package
             super.begin()
             trapMgr.addTrap(new Tarpit(200));
             trapMgr.addTrap(new Wall(350));
-            trapMgr.addTrap(new Wall(400));
+            trapMgr.addTrap(new Wall(410));
         }
 
         public override function update():void
