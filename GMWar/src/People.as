@@ -326,6 +326,12 @@ package
                 hurt = 0;
             }
             health = health - hurt;
+			
+			if (health <= 0)
+			{
+				dead = true;
+				FP.world.add(new Angel(x - 37,y - imageRun.scaledHeight));
+			}
         }
 
         public function addDamage(damage:Damage):void
