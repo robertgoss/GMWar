@@ -8,6 +8,7 @@ package
 
     import traps.Tarpit;
     import traps.FirePit;
+    import traps.PoisonTrap;
     import traps.Wall;
     import traps.TallWall;
 	
@@ -32,7 +33,7 @@ package
 		{
 			peopleMgr = new PeopleManager();
             trapMgr = new TrapManager(); 
-            //yDiff = 150; - rob
+            //yDiff = 150;// - rob
             yDiff = 350;
             //Add Floor
 		}
@@ -40,7 +41,7 @@ package
         public override function begin():void
         {
             super.begin()
-            trapMgr.addTrap(new FirePit(780));
+            trapMgr.addTrap(new PoisonTrap(780));
             trapMgr.addTrap(new Wall(350));
             trapMgr.addTrap(new TallWall(1010));
 			music.loop();

@@ -36,6 +36,7 @@ package
         private var curTrap:Trap;
         
         private var cableHeight:int;
+        private var cableHeightTrue:int;
 
         public var xTrue:Number;
         private var yTrue:Number;
@@ -91,7 +92,7 @@ package
 		
 		public function onTrap():void
         {
-            var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(x)      
+            var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(xTrue)      
             if(trapNew==curTrap)
             {
                 if(curTrap!=null)
@@ -137,10 +138,7 @@ package
             var gSpeed:Number = speed;
             for each(var dam:Damage in damages)
             {
-                if(!dam.isIce() || !armourI)
-                {
-                    gSpeed = dam.slows()
-                }
+                gSpeed = gSpeed*dam.slows()
             }
             return gSpeed;
         }
@@ -229,13 +227,13 @@ package
         public function climbing():void
         {
             yTrue -= (speed + (speed*climbProp))*0.15;
-            if(yTrue<(-curTrap.tHeight+floor()+50))
+            if(yTrue<cableHeightTrue+50)
             {
-                yTrue = -curTrap.tHeight+floor()
+                yTrue = cableHeightTrue;
                 xTrue += 25
-                if(xTrue>(curTrap.x+curTrap.tWidth-curTrap.rRap))
+                if(xTrue>(curTrap.xTrue+curTrap.tWidth-curTrap.rRap))
                 {
-                    xTrue = curTrap.x+curTrap.tWidth-curTrap.rRap
+                    xTrue = curTrap.xTrue+curTrap.tWidth-curTrap.rRap
                 }
                 startWalking();
             }
@@ -246,7 +244,8 @@ package
             graphic = imageClimb;
             imageClimb.play("run")
             moveState = "Climbing";
-            x += curTrap.lRap
+            xTrue += curTrap.lRap
+            cableHeightTrue = floor()-curTrap.tHeight;
         }
 
         public function falling():void
@@ -265,7 +264,7 @@ package
             graphic = imageFall;
             imageFall.play("run")
             moveState = "Falling";
-            cableHeight = yTrue;
+            cableHeightTrue = yTrue;
             yTrue += 50;
         }
 
@@ -282,7 +281,7 @@ package
             //Draw.line(x,floor(),x,0,0xFFFFFF)
             if(moveState=="Climbing")
             {
-                Draw.line(x-9,y-50,x,-curTrap.tHeight+floor(),0xFFFFFF)
+                Draw.line(x-9,y-50,x,cableHeight,0xFFFFFF)
             }
             if(moveState=="Falling")
             {
@@ -296,12 +295,14 @@ package
             {
                 x = xTrue - 800;
                 y = yTrue + (FP.world as Environment).yDiff;
+                cableHeight = cableHeightTrue + (FP.world as Environment).yDiff;
                 singlerender()
             }
             if(xTrue<850)
             {
                 x = xTrue
                 y = yTrue
+                cableHeight = cableHeightTrue
                 singlerender()
             }
         }
