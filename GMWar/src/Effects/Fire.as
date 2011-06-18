@@ -1,4 +1,4 @@
-package  
+package  Effects
 {
 	import flash.display.BitmapData;
 	import net.flashpunk.Entity;
@@ -20,8 +20,8 @@ package
 		private var emitter:Emitter;
 		//private const partile_number:uint = 100;
 		
-		[Embed(source = 'fire.png')]
-		private const FIRE:Class;
+		[Embed(source = '../Asserts/fire.png')]
+		private static const FIRE:Class;
 		private var fireImage:Spritemap = new Spritemap(FIRE, 15, 30);
 		
 		private var delay:int = 0;

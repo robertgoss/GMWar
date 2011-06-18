@@ -2,6 +2,7 @@ package traps
 {
 import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+    import Effects.Fire;
     public class FirePit extends Trap
     {
         [Embed(source = '../Asserts/pit.png')]
@@ -11,7 +12,8 @@ import net.flashpunk.Entity;
         public function FirePit(x_:int)
         {
 			graphic = image;
-			super(x_, "Fire");
+			super(x_);
+            effects.push(new Fire(x,y))
             damage = new Damage("FIRE",1,8,0,this);
             price = 10;
             projectile = null;
