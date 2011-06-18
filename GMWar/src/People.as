@@ -346,9 +346,27 @@ package
 		    person.climbProp = seq[2];
 		    person.armour = seq[3];
             person.health = 100 + 10*seq[4]
-            person.armourF = seq[5];
-            person.armourI = seq[6];
-            person.armourP = seq[7];
+            if(seq[5]>6)
+            {
+                person.armourF = true;
+            }else
+            {
+                person.armourF = false
+            }
+            if(seq[6]>6)
+            {
+                person.armourI = true;
+            }else
+            {
+                person.armourI = false
+            }
+            if(seq[7]>6)
+            {
+                person.armourP = true;
+            }else
+            {
+                person.armourP = false
+            }
         }
 
         public function getSeq():Array
@@ -359,9 +377,27 @@ package
             seq[2] = climbProp;
             seq[3] = armour;
             seq[4] = (health-100)*0.1;
-            seq[5] = armourF;
-            seq[6] = armourI;
-            seq[7] = armourP;
+            if(armourF)
+            {
+                seq[5] = 8
+            }else
+            {
+                seq[5] = 0
+            }
+            if(armourI)
+            {
+                seq[6] = 8
+            }else
+            {
+                seq[6] = 0
+            }
+            if(armourP)
+            {
+                seq[7] = 8
+            }else
+            {
+                seq[7] = 0
+            }
             return seq;
         }
 	}
