@@ -2,6 +2,8 @@ package Effects
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.utils.Ease;
+	import net.flashpunk.graphics.Emitter;
 	import net.flashpunk.FP;
 	/**
 	 * ...
@@ -13,6 +15,9 @@ package Effects
 		[Embed(source = '../Asserts/ice.png')]
 		private const ICE:Class;
 		private var iceImage:Image = new Image(ICE);
+		
+		//I'm bored
+		
 		
 		public function Ice(xPos:Number, yPos:Number) 
 		{

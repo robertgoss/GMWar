@@ -8,31 +8,34 @@ package
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Draw;
 	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Spritemap;
 	/**
-	 * ...
-	 * @author Chris Jacobs
-	 */
+	* ...
+	* @author Chris Jacobs
+	*/
 	
-	 //Draws lines
+	//Draws lines
 	public class Fire extends Effect
 	{
 		private var emitter:Emitter;
 		//private const partile_number:uint = 100;
 		
-		[Embed(source = 'Asserts/fire.png')]
+		[Embed(source = 'fire.png')]
 		private const FIRE:Class;
-		private var fireImage:Image = new Image(FIRE);
+		private var fireImage:Spritemap = new Spritemap(FIRE, 15, 30);
 		
 		private var delay:int = 0;
-		private var eType:String;
 		
 		public function Fire(xPos:Number = 0, yPos:Number = 0)
 		{	
+			fireImage.add("Flames", [0, 1, 2], 20, true);
+			
 			emitter = new Emitter(new BitmapData(1, 1), 1, 1);
 			emitter.newType("Fire", [0]);
 			emitter.setAlpha("Fire", 1.0);
 			emitter.setMotion("Fire", 90, 20, 3, 0, 0, -0.5, Ease.bounceInOut);
 			emitter.setColor("Fire", 0xFF4600);
+			
 			graphic = new Graphiclist(fireImage, emitter);
 				
 			x = xPos;
@@ -40,6 +43,7 @@ package
 			width = fireImage.width;
 			
 			FP.world.add(this);
+			fireImage.play("Flames");
 		}
 		
 		override public function update():void 

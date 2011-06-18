@@ -22,18 +22,15 @@ package
 		public var effect:Effect;
         public var lRap:int;
         public var rRap:int;
+		public var effects:Array;
 
-        public function Trap(x_:int, e:String = "None")
+        public function Trap(x_:int)
         {
             x = x_;
             y = (FP.world as Environment).floorHieght(x);
-			if (e != "None")
-			{
-				effect = new Effect(x, y, e);
-				//addGraphic(effect.graphic);
-			}
             lRap = 0;
             rRap = 0;
+			effects = new Array();
         }
         
         public function isIn(xTest:int):Boolean
@@ -60,9 +57,9 @@ package
                 projectile.update()
             }
 			
-			if (effect != null)
+			for each (var e:Effect in effects)
 			{
-				effect.update();
+				e.update();
 			}
         }
 
