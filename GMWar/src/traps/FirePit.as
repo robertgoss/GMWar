@@ -16,7 +16,7 @@ import net.flashpunk.Entity;
 
 			for (var i:int = 0; i < 8; i++)
 			{
-				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y))
+				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y)))
 			}
 
             damage = new Damage("FIRE",1,8,0,this);
