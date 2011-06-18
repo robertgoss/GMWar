@@ -1,14 +1,17 @@
 package  
 {
+	import flash.display.SpreadMethod;
+	import flash.display.Sprite;
     import net.flashpunk.FP;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Spritemap;
 	
 	public class People extends Entity
 	{
-		[Embed(source = 'Soldier.png')]
+		[Embed(source = 'Asserts/runningNormal.png')]
 		private const PLAYER:Class;
-		private var image:Image = new Image(PLAYER);
+		private var image:Spritemap = new Spritemap(PLAYER, 74, 108); 
 		private var dead:Boolean;
 		private var trapOn:int;
 		private var flying:int;
@@ -27,7 +30,8 @@ package
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
-			image.scale = 0.2;
+			image.scale = 0.5;
+			image.add("run", [ 0, 1, 2, 3, 4], 15, true);
 			graphic = image;
 			x = xPos as Number;
             xTrue = x as Number;
@@ -48,6 +52,8 @@ package
             damages = []
 
             curTrap = null;
+
+			image.play("run");
 		}
 		
 		private function AtEnd():void

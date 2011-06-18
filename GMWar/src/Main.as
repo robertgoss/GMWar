@@ -2,6 +2,7 @@ package
 {
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
+	import net.flashpunk.utils.Draw;
 	
 	/**
 	 * ...
@@ -13,6 +14,7 @@ package
 		public function Main():void 
 		{
 			super(800, 600);
+			FP.screen.color = 0xFFFFFF;
 			FP.console.enable();
 			FP.world = new Environment();
 		}
