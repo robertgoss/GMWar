@@ -16,11 +16,13 @@ import net.flashpunk.Entity;
             price = 10;
             projectile = null;
             airbourne = false;
-            tHeight = 150;
+            tHeight = 148;
             tWidth = 10;
             scalibility = false;
             conApply = true;
             blocking = true;
+            lRap = 6
+            rRap = -5
         }
     }
 }

@@ -203,6 +203,10 @@ package
             {
                 yTrue = -curTrap.tHeight+floor()
                 xTrue += 25
+                if(xTrue>(curTrap.x+curTrap.tWidth-curTrap.rRap))
+                {
+                    xTrue = curTrap.x+curTrap.tWidth-curTrap.rRap
+                }
                 startWalking();
             }
         }
@@ -212,6 +216,7 @@ package
             graphic = imageClimb;
             imageClimb.play("run")
             moveState = "Climbing";
+            x += curTrap.lRap
         }
 
         public function falling():void
@@ -245,11 +250,11 @@ package
             //Draw.line(x,floor(),x,0,0xFFFFFF)
             if(moveState=="Climbing")
             {
-                Draw.line(x-10,y-50,x,-curTrap.tHeight+floor(),0xFFFFFF)
+                Draw.line(x-9,y-50,x,-curTrap.tHeight+floor(),0xFFFFFF)
             }
             if(moveState=="Falling")
             {
-                Draw.line(x+10,y-50,x,cableHeight,0xFFFFFF)
+                Draw.line(x+9,y-50,x,cableHeight,0xFFFFFF)
             }
         }
    

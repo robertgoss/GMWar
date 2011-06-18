@@ -20,6 +20,8 @@ package
         public var conApply:Boolean;
         public var blocking:Boolean;
 		public var effect:Effect;
+        public var lRap:int;
+        public var rRap:int;
 
         public function Trap(x_:int, e:String = "None")
         {
@@ -30,13 +32,15 @@ package
 				effect = new Effect(x, y, e);
 				//addGraphic(effect.graphic);
 			}
+            lRap = 0;
+            rRap = 0;
         }
         
         public function isIn(xTest:int):Boolean
         {
             if(xTest>=x)
             {
-                if(xTest<=(x+tWidth))
+                if(xTest<=(x+tWidth-rRap))
                 {
                     return true;
                 }
