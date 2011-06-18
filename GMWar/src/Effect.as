@@ -7,6 +7,7 @@ package
 	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Draw;
+	import net.flashpunk.FP;
 	/**
 	 * ...
 	 * @author Chris Jacobs
@@ -32,8 +33,10 @@ package
 			emitter.setColor("Fire", 0xFF4600);
 			graphic = new Graphiclist(fireImage, emitter);
 			x = xPos;
-			y = yPos;
+			y = yPos - fireImage.height;
 			width = fireImage.width;
+			
+			FP.world.add(this);
 		}
 		
 		override public function update():void 

@@ -19,11 +19,17 @@ package
         public var scalibility:Boolean;
         public var conApply:Boolean;
         public var blocking:Boolean;
+		public var effect:Effect;
 
-        public function Trap(x_:int)
+        public function Trap(x_:int, e:String = "None")
         {
             x = x_;
             y = (FP.world as Environment).floorHieght(x);
+			if (e != "None")
+			{
+				effect = new Effect(x, y, e);
+				//addGraphic(effect.graphic);
+			}
         }
         
         public function isIn(xTest:int):Boolean
@@ -45,6 +51,11 @@ package
             {
                 projectile.update()
             }
+			
+			if (effect != null)
+			{
+				effect.update();
+			}
         }
 
         public function onTrap(person:People):void
