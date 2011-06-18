@@ -4,7 +4,7 @@ package
     import net.flashpunk.utils.Draw;
     import net.flashpunk.utils.Input;
     import net.flashpunk.utils.Key;
-
+	import net.flashpunk.Sfx;
 
     import traps.Tarpit;
     import traps.FirePit;
@@ -22,7 +22,12 @@ package
         public var paused:Boolean;
 
         public var yDiff:int
-
+		
+		//Background Music
+		[Embed (source = 'Asserts/BackgroundMusic.mp3')]
+		private static const MUSIC:Class
+		private var music:Sfx = new Sfx(MUSIC);
+		
 		public function Environment() 
 		{
 			peopleMgr = new PeopleManager();
@@ -38,6 +43,7 @@ package
             trapMgr.addTrap(new FirePit(780));
             trapMgr.addTrap(new Wall(350));
             trapMgr.addTrap(new TallWall(1010));
+			music.loop();
         }
 
         public override function update():void
