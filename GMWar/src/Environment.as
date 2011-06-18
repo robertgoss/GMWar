@@ -21,19 +21,23 @@ package
         public var peopleMgr:PeopleManager;
         public var paused:Boolean;
 
+        public var yDiff:int
+
 		public function Environment() 
 		{
 			peopleMgr = new PeopleManager();
             trapMgr = new TrapManager(); 
+            //yDiff = 150; - rob
+            yDiff = 350;
             //Add Floor
 		}
 
         public override function begin():void
         {
             super.begin()
-            trapMgr.addTrap(new FirePit(200));
+            trapMgr.addTrap(new FirePit(780));
             trapMgr.addTrap(new Wall(350));
-            trapMgr.addTrap(new TallWall(410));
+            trapMgr.addTrap(new TallWall(1010));
         }
 
         public override function update():void
@@ -53,6 +57,7 @@ package
         public override function render():void
         {
             Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
+            Draw.line(0,floorHieght(0)+yDiff,800,floorHieght(800)+yDiff,0xFFFFFF)
             super.render()
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)

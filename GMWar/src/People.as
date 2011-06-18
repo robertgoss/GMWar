@@ -182,9 +182,8 @@ package
 			move();
 
             updateDamages();
-
-            x = xTrue;
-            y = yTrue;
+            xTrue;
+            yTrue;
 
             //Get current floor
 		}
@@ -214,7 +213,7 @@ package
         {
             xTrue += gameSpeed();
             //x += 0.5;
-			if (xTrue >= 800) 
+			if (xTrue >= 1500) 
 			{
 				dead = true;
 			}
@@ -275,7 +274,9 @@ package
 
         } 
 
-        public override function render():void
+        
+
+        public function singlerender():void
         {
             super.render();
             //Draw.line(x,floor(),x,0,0xFFFFFF)
@@ -288,7 +289,22 @@ package
                 Draw.line(x+9,y-50,x,cableHeight,0xFFFFFF)
             }
         }
-   
+
+        public override function render():void
+        {
+            if(xTrue>750)
+            {
+                x = xTrue - 800;
+                y = yTrue + (FP.world as Environment).yDiff;
+                singlerender()
+            }
+            if(xTrue<850)
+            {
+                x = xTrue
+                y = yTrue
+                singlerender()
+            }
+        }
 
         public function harm(hurt:int,damage:Damage):void
         {
@@ -332,6 +348,8 @@ package
             }   
             damages = newDamages;
         }
+
+      
 		
 		public function IsDead():Boolean
 		{
