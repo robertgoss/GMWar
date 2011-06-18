@@ -4,13 +4,12 @@ import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Tarpit extends Trap
     {
-        [Embed(source = '../Soldier.png')]
+        [Embed(source = '../Asserts/tarpit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
         public function Tarpit(x_:int)
         {
             super(x_)
-            image.scale = 0.2;
 			graphic = image;
             damage = new Damage("SLOW",1,1,0,this);
             price = 10;

@@ -27,9 +27,9 @@ package
         
         public function isIn(xTest:int):Boolean
         {
-            if(xTest>=(x-tWidth))
+            if(xTest>=(x-(tWidth/2)))
             {
-                if(xTest<=(x+tWidth))
+                if(xTest<=(x+(tWidth/2)))
                 {
                     return true;
                 }

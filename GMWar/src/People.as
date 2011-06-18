@@ -32,6 +32,7 @@ package
 		{
 			image.scale = 0.5;
 			image.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            image.y = -54;
 			graphic = image;
 			x = xPos as Number;
             xTrue = x as Number;
@@ -83,12 +84,10 @@ package
         public function gameSpeed():Number
         {
             var gSpeed:Number = 1;
-            y = 200;
             for each(var dam:Damage in damages)
             {
                 if(!dam.isIce() || !armourI)
                 {
-                    y=100;
                     gSpeed = dam.slows()
                 }
             }
