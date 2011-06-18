@@ -126,7 +126,7 @@ package
 
         public function gameSpeed():Number
         {
-            var gSpeed:Number = 1;
+            var gSpeed:Number = speed;
             for each(var dam:Damage in damages)
             {
                 if(!dam.isIce() || !armourI)
