@@ -1,5 +1,6 @@
 package  
 {
+	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
     import net.flashpunk.utils.Draw;
     import net.flashpunk.utils.Input;
@@ -29,6 +30,10 @@ package
 		private static const MUSIC:Class
 		private var music:Sfx = new Sfx(MUSIC);
 		
+		[Embed (source = 'Asserts/guiBackground.png')]
+		private static const BACKGROUND:Class
+		private var background:Image = new Image(BACKGROUND);
+		
 		public function Environment() 
 		{
 			peopleMgr = new PeopleManager();
@@ -36,6 +41,7 @@ package
             //yDiff = 150;// - rob
             yDiff = 350;
             //Add Floor
+			addGraphic(background, 0);
 		}
 
         public override function begin():void
@@ -61,6 +67,7 @@ package
             }
         }
 
+		/*
         public override function render():void
         {
             Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
@@ -69,7 +76,8 @@ package
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }
-
+		*/
+		
         public function floorHieght(x:int):int
         {
             return 200;
