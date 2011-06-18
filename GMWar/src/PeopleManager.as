@@ -8,10 +8,17 @@ package
 	 */
 	public class PeopleManager 
 	{
-		
+        private var breedingPool:Array
+        private var currentPool:Array;
+        		
 		public function PeopleManager() 
 		{
-			
+			breedingPool = []
+            for(var i:int=0;i<14;i++)
+            {
+                breedingPool.push(randomSeq())
+            }
+            currentPool = []
 		}
 		
 		public function update():void
@@ -21,13 +28,14 @@ package
 				addWave();
 			}
 			removeDeadPeople();
+            updatePool();
 		}
 		
 		public function addWave():void
 		{
 			for (var i : int = 0; i < 10; i++)
 			{
-				FP.world.add(randomPerson(FP.rand(151)-150));
+				FP.world.add(breed(FP.rand(151)-150));
 			}
 		}
 		
@@ -39,7 +47,11 @@ package
 			{
 				if (person.IsDead())
 				{
-					FP.world.remove(person);
+                    var record:Array = []
+                    record[0] = person.xTrue;
+                    record[1] = person.getSeq();
+                    currentPool.push(record)
+                    FP.world.remove(person);
 				}
 			}
 		}
@@ -62,7 +74,7 @@ package
             return between;
         }
 
-        public static function randomPerson(x:int):People
+        public static function randomSeq():Array
         {
             var seq:Array = []
             var s:int = 0;
@@ -74,16 +86,98 @@ package
             for(i=0;i<8;i++)
             {
                 trace(i,seq[i]);
-                seq[i] = seq[i] / s;
+                seq[i] = 32 * seq[i] / s;
             }
+            return seq;
+        }
+
+        public static function randomPerson(x:int):People
+        {
+            var seq:Array = randomSeq();
             var person:People = new People(x)
             person.setSeq(seq);
             return person;
         }
-
-        public static function breed(xPos:int,yPos:int,p1:People,p2:People):People
+        
+        public function updatePool():void
         {
-            return new People(xPos,yPos);
+            var top:Array = [-1];
+            var second:Array = [-2];
+            var third:Array = [-3];
+            if(currentPool.length>9)
+            {
+                for each(var record:Array in currentPool)
+                {
+                    if(record[0] > top[0])
+                    {
+                        third = second;
+                        second = top;
+                        top = record;
+                    }else
+                    {
+                        if(record[0] > second[0])
+                        {
+                            third = second;
+                            second = record
+                        }else
+                        {
+                            if(record[0]>third[0])
+                            {
+                                third = record;
+                            }
+                        }
+                    }
+                }
+            }
+            breedingPool.reverse();
+            breedingPool.pop();
+            breedingPool.pop();
+            breedingPool.pop();
+            breedingPool.reverse();
+            breedingPool.push(top[1]);
+            breedingPool.push(second[1]);
+            breedingPool.push(third[1]);
+        }
+
+        public function breed(xPos:int):People
+        {
+            if(FP.rand(20)==0)
+            {
+                return randomPerson(xPos);
+            }
+            var male:Array = breedingPool[FP.rand(14)];
+            var female:Array = breedingPool[FP.rand(14)];
+            var seq:Array = []
+            seq[0] = male[0]
+            seq[1] = male[1]
+            seq[2] = male[2]
+            seq[3] = male[3]
+            seq[4] = female[4]
+            seq[5] = female[5]
+            seq[6] = female[6]
+            seq[7] = female[7]
+            var mut:int = FP.rand(8)
+            seq[mut] = FP.rand(5)-2
+            if(seq[mut]<0)
+            {
+                seq[mut] = 0
+            }
+            if(seq[mut]>10)
+            {
+                seq[mut] = 10
+            }
+            var s:int = 0;
+            for(var i:int=0;i<8;i++)
+            {
+                s += seq[i]
+            }
+            for(i=0;i<8;i++)
+            {
+                seq[i] = seq[i] * 32 / s
+            }
+            var person:People = new People();
+            person.setSeq(seq)
+            return person;
         }
 	}
 

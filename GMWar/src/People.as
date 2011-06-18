@@ -21,10 +21,10 @@ package
 		private var imageFall:Spritemap = new Spritemap(PLAYERFALL, 74, 108); 
 		private var dead:Boolean;
 		private var trapOn:int;
-		public var flyingProp:int;
+		public var flyingProp:Number;
 		public var speed:Number;
-		public var climbProp:int;
-		public var armour:int;
+		public var climbProp:Number;
+		public var armour:Number;
         public var armourF:Boolean;
         public var armourI:Boolean;
         public var armourP:Boolean;
@@ -36,6 +36,9 @@ package
         private var curTrap:Trap;
         
         private var cableHeight:int;
+
+        public var xTrue:Number;
+        private var yTrue:Number;
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
@@ -53,7 +56,9 @@ package
             imageFall.x = 0;
 			graphic = imageRun;
 			x = xPos as Number;
+            xTrue = x;
 			y = yPos;
+            yTrue = y;
 
 			dead = false;
 			
@@ -101,7 +106,7 @@ package
                     }
                 }else
                 {
-                    if(y!=floor())
+                    if(yTrue!=floor())
                     {
                         startFalling();
                     }
@@ -126,7 +131,7 @@ package
 
         public function gameSpeed():Number
         {
-            var gSpeed:Number = 1;
+            var gSpeed:Number = speed;
             for each(var dam:Damage in damages)
             {
                 if(!dam.isIce() || !armourI)
@@ -146,6 +151,9 @@ package
 			move();
 
             updateDamages();
+
+            x = xTrue;
+            y = yTrue;
 
             //Get current floor
 		}
@@ -173,9 +181,9 @@ package
 
         public function walking():void
         {
-            x += gameSpeed();
+            xTrue += gameSpeed();
             //x += 0.5;
-			if (x >= 800) 
+			if (xTrue >= 800) 
 			{
 				dead = true;
 			}
@@ -190,11 +198,11 @@ package
 
         public function climbing():void
         {
-            y -= (speed + (speed*climbProp))*0.1;
-            if(y<(-curTrap.tHeight+floor()+50))
+            yTrue -= (speed + (speed*climbProp))*0.15;
+            if(yTrue<(-curTrap.tHeight+floor()+50))
             {
-                y = -curTrap.tHeight+floor()
-                x += 25
+                yTrue = -curTrap.tHeight+floor()
+                xTrue += 25
                 startWalking();
             }
         }
@@ -208,11 +216,11 @@ package
 
         public function falling():void
         {
-            y += (speed + (speed*climbProp))*0.1;
-            if(y>floor())
+            yTrue += (speed + (speed*climbProp))*0.1;
+            if(yTrue>floor())
             {
-                y = floor()
-                x += 36;
+                yTrue = floor()
+                xTrue += 36;
                 startWalking();
             }
         }
@@ -222,8 +230,8 @@ package
             graphic = imageFall;
             imageFall.play("run")
             moveState = "Falling";
-            cableHeight = y;
-            y+=50;
+            cableHeight = yTrue;
+            yTrue += 50;
         }
 
         public function flying():void
@@ -298,7 +306,7 @@ package
         {
             var person:People = this
             person.flyingProp = seq[0];
-		    person.speed = seq[1]*0.1;
+		    person.speed = seq[1]*0.1+0.22;
 		    person.climbProp = seq[2];
 		    person.armour = seq[3];
             person.health = 100 + 10*seq[4]
@@ -311,7 +319,7 @@ package
 		{
             var seq:Array = []
             seq[0] = flyingProp;
-            seq[1] = speed*10;
+            seq[1] = speed*10 - 2.2;
             seq[2] = climbProp;
             seq[3] = armour;
             seq[4] = (health-100)*0.1;

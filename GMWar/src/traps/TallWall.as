@@ -7,7 +7,7 @@ import net.flashpunk.Entity;
         [Embed(source = '../Asserts/lWall.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
-        public function Wall(x_:int)
+        public function TallWall(x_:int)
         {
             super(x_)
             image.y = -150;
