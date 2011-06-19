@@ -37,7 +37,7 @@ package UiClasses
 			buttons = [];
 			arrayPosition = 0;
 			
-			for (var i:int = 0; i < 6; i++)
+			for (var i:int = 0; i < 19; i++)
 			{
 				if (i < 4)
 				{

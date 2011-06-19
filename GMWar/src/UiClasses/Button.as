@@ -12,12 +12,14 @@ package UiClasses
 	import traps.BurningHouse;
 	import traps.FlammingHoverTurret;
 	import traps.FlammingTurret;
+	import traps.FreezingHoverTurret;
 	import traps.FreezingTurret;
 	import traps.GasHouse;
 	import traps.HouseOfFlyingBadgers;
 	import traps.HoverTurret;
 	import traps.LargeTurret;
 	import traps.SpikePit;
+	import traps.VemonHoverTurret;
 	import traps.VemonTurret;
 
        import traps.Tarpit;
@@ -184,9 +186,14 @@ package UiClasses
         {
             var xTrue:int = Input.mouseX
             var yTrue:int = Input.mouseY
+            if(y>250 && y< 350)
+            {
+                loseFocus();
+                return;
+            }
             if(y>300)
             {
-                xTrue -= 800;
+                xTrue += 800;
                 yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
             }else
             {
