@@ -195,11 +195,8 @@ package UiClasses
             if(yTrue>300)
             {
                 xTrue += 800;
-                yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
-            }else
-            {
-                yTrue = (FP.world as Environment).floorHieght(xTrue);
             }
+            yTrue = (FP.world as Environment).floorHieght(xTrue);
             switch(trapNo)
             {
                 case -1:
