@@ -419,6 +419,10 @@ package
 				FP.world.remove(poisonEffect);
 				isPoisoned = false;
 			}
+            if(moveState=="Flying")
+            {
+                hurt = hurt *2
+            }
             health = health - hurt;
 			
 			if (health <= 0)
