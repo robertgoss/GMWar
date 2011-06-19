@@ -1,5 +1,6 @@
 package traps
 {
+	/////////////////////////Trap Number 0/////////////////////
     import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Wall extends Trap
@@ -23,6 +24,8 @@ package traps
             blocking = true;
             lRap = 6
             rRap = -5
+			
+			setHitbox (image.scaledWidth, -image.scaledHeight);
         }
     }
 }

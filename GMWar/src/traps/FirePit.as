@@ -1,6 +1,7 @@
 package traps
 {
-import net.flashpunk.Entity;
+	/////////////////////////Trap Number 3/////////////////////
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import Effects.Fire;
     public class FirePit extends Trap
@@ -13,7 +14,6 @@ import net.flashpunk.Entity;
         {
 			graphic = image;
 			super(x_);
-
 			for (var i:int = 0; i < 8; i++)
 			{
 				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y)))
@@ -28,6 +28,8 @@ import net.flashpunk.Entity;
             scalibility = false;
             conApply = true;
             blocking = false;
+			
+			setHitbox (image.scaledWidth, image.scaledHeight);
         }
 		
     }
