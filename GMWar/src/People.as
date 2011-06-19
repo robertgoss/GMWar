@@ -241,6 +241,7 @@ package
 			if (xTrue >= 1500) 
 			{
 				dead = true;
+				(FP.world as Environment).takeHealth(5);
 			}
         }
 
