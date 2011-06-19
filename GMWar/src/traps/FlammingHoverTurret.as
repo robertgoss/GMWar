@@ -18,8 +18,8 @@ package traps
             image.x = 0;
 			graphic = image;
             damage = null;
-            price = 10;
-            var pDam:Damage = new Damage("FIRE",1,12,2,this);
+            //price = 10;
+            var pDam:Damage = new Damage("FIRE",1,12,5,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;

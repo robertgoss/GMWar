@@ -18,9 +18,7 @@ package traps
 			{
 				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y)))
 			}
-
-            damage = new Damage("FIRE",1,8,2,this);
-            price = 10;
+            damage = new Damage("FIRE",1,8,0,this);
             projectile = null;
             airbourne = false;
             tHeight = 0;

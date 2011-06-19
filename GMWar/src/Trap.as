@@ -10,7 +10,6 @@ package
 	 */
 	public class Trap extends Entity
 	{
-        public var price:int;
         public var damage:Damage;
         public var projectile:Projectile;
         public var airbourne:Boolean;

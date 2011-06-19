@@ -17,7 +17,7 @@ package
 			super(800, 600);
 			FP.screen.color = 0x222222;
 			FP.console.enable();
-			FP.world = new Environment();
+			FP.world = new Intro();
 		}
 
 	}
