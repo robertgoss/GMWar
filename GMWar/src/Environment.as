@@ -9,6 +9,7 @@ package
 	import UiClasses.UI;
 
     import traps.Tarpit;
+    import traps.Turret;
     import traps.FirePit;
     import traps.PoisonTrap;
     import traps.Wall;
@@ -49,7 +50,7 @@ package
         public override function begin():void
         {
             super.begin()
-            trapMgr.addTrap(new PoisonTrap(180));
+            trapMgr.addTrap(new Turret(180));
             trapMgr.addTrap(new Tarpit(780));
             trapMgr.addTrap(new Wall(350));
             trapMgr.addTrap(new TallWall(1010));

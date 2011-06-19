@@ -1,16 +1,19 @@
 package traps 
 {
+	import Effects.Spike;
 	import net.flashpunk.graphics.Image;
 	
 	/**
 	 * ...
 	 * @author Chris Jacobs
 	 */8
-	public class SpikePit 
+	public class SpikePit extends Trap
 	{
-		private var image:Image;	
+		[Embed (source = '../Asserts/pit.png')]
+		private static const IMAGE:Class;
+		private var image:Image = new Image(IMAGE);
 		
-		public function SpikePit() 
+		public function SpikePit(x_:Number) 
 		{
 			graphic = image;
 			super(x_);
@@ -24,7 +27,7 @@ package traps
             scalibility = false;
             conApply = true;
             blocking = false;
-			
+			effects.push(new Spike(rel_x(x, y), rel_y(x, y)));
 			setHitbox (image.scaledWidth, image.scaledHeight);
 		}
 		
