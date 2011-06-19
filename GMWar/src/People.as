@@ -430,6 +430,7 @@ package
             var hDelta:int = oldHealth-health;  
             if(hDelta!=0)
             {
+                //yTrue += 10
                 FP.world.add(new Hurt(x+20,y-60,hDelta))
             }
             damages = newDamages;

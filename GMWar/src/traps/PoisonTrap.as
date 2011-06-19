@@ -19,7 +19,7 @@ package traps
 			{
 				effects.push(new Gas(rel_x(x+5 + i*10, y),rel_y(x+5 + i*10, y)))
 			}
-            damage = new Damage("Poison",1,8,0,this);
+            damage = new Damage("Poison",1,10,5,this);
             price = 10;
             projectile = null;
             airbourne = false;

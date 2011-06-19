@@ -49,7 +49,8 @@ package
         public override function begin():void
         {
             super.begin()
-            trapMgr.addTrap(new PoisonTrap(780));
+            trapMgr.addTrap(new PoisonTrap(180));
+            trapMgr.addTrap(new Tarpit(780));
             trapMgr.addTrap(new Wall(350));
             trapMgr.addTrap(new TallWall(1010));
 			//music.loop();
