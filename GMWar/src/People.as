@@ -51,7 +51,7 @@ package
         private var cableHeightTrue:int;
 
         public var xTrue:Number;
-        private var yTrue:Number;
+        public var yTrue:Number;
 
         public var lastpaused:Boolean;
 		
@@ -193,8 +193,6 @@ package
 			move();
 
             updateDamages();
-            xTrue;
-            yTrue;
 
             //Get current floor
 		}
@@ -453,7 +451,7 @@ package
             }
 		    person.speed = seq[1]*0.1+0.42;
 		    person.climbProp = seq[2];
-		    person.armour = seq[3];
+		    person.armour = seq[3]*0.2;
             person.health = 100 + 10*seq[4]
             if(seq[5]>6)
             {
@@ -490,7 +488,7 @@ package
             }
             seq[1] = speed*10 - 4.2;
             seq[2] = climbProp;
-            seq[3] = armour;
+            seq[3] = armour*5;
             seq[4] = (health-100)*0.1;
             if(armourF)
             {
