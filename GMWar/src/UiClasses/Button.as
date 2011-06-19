@@ -160,6 +160,7 @@ package UiClasses
 				
 				break; 
 				default: iconImage.frame = 19;
+				trapNo = -1;	
 				//Remove Icon
 					
 				break;
