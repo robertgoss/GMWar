@@ -16,22 +16,23 @@ package UiClasses
 	 /* Trap numbering:
 	  * 0 - Wall
 	  * 1 - Tall Wall
-	  * 2 - Tarpit
+	  * 2 - Spike Pit
 	  * 3 - Fire Pit
-	  * 4 - Gas Pit(poison pit)
-	  * 5 - Turret
-	  * 6 - Flaming Turret
-	  * 7 - Frezing Turret
-	  * 8 - Vemon Turret
-	  * 9 - Slowing Turret
-	  * 10 - Hover Turret
-	  * 11 - Flamming Hover Turret
-	  * 12 - Freezing Hover Turret
-	  * 13 - Vemon Hover Turret
-	  * 14 - Slowing Hover Turret
-	  * 15 - House of Flying Badgers
-	  * 16 - Burning House
-	  * 17 - Gas House
+	  * 4 - Gas Pit
+	  * 5 - Tar Pit 
+	  * 6 - Turret
+	  * 7 - Flaming Turret
+	  * 8 - Frezing Turret
+	  * 9 - Vemon Turret
+	  * 10 - Slowing Turret
+	  * 11 - Hover Turret
+	  * 12 - Flamming Hover Turret
+	  * 13 - Freezing Hover Turret
+	  * 14 - Vemon Hover Turret
+	  * 15 - Slowing Hover Turret
+	  * 16 - House of Flying Badgers
+	  * 17 - Burning House
+	  * 18 - Gas House
 	  */ 
 	 
 	public class Button extends Entity 
@@ -43,14 +44,24 @@ package UiClasses
 		//Icons
 		private var wallIcon:Image;
 		private var tallWallIcon:Image;
-		private var tarpitIcon:Image;
+		private var spikePitIcon:Image;
 		private var firePitIcon:Image;
 		private var gasPitIcon:Image;
+		private var tarPitIcon:Image;
 		private var turretIcon:Image;
+		private var fireTurretIcon:Image;
 		private var freezingTurretIcon:Image;
 		private var vemonTurretIcon:Image;
-		
-		private var houseOfFlyingBadgersIcon:Image;
+		private var slowTurrentIcon:Image;
+		private var hoverTurretIcon:Image;
+		private var fireHoverTurretIcon:Image;
+		private var iceHoverTurretIcon:Image;
+		private var vemonHoverTurretIcon:Image;
+		private var slowHoverTurretIcon:Image;
+		private var houseBadgerIcon:Image;
+		private var burningHouseIcon:Image;
+		private var gasHouseIcon:Image;
+		private var removeIcon:Image;
 		
 		private var roleOver:Function = null;
 		private var click:Function = null;
@@ -73,7 +84,7 @@ package UiClasses
 				case 1: graphic = tallWallIcon;
 					
 				break;
-				case 2: graphic = tarpitIcon;
+				case 2: graphic = spikePitIcon;
 					
 				break;
 				case 3: graphic = firePitIcon;
@@ -82,21 +93,55 @@ package UiClasses
 				case 4: graphic = gasPitIcon;
 					
 				break;
-				case 5: graphic = turretIcon;
+				case 5: graphic = tarPitIcon;
 					
 				break;
-				case 6: graphic = freezingTurretIcon;
+				
+				case 6: graphic = turretIcon;
 					
 				break;
-				case 7: graphic = vemonTurretIcon;
+				case 7: graphic = fireTurretIcon;
 					
 				break;
-				case 8: graphic = houseOfFlyingBadgersIcon;
+				case 8: graphic = freezingTurretIcon;
 					
 				break;
-				/*default:
+				case 9: graphic = vemonTurretIcon;
 					
-				break;*/
+				break;
+				case 10: graphic =  slowTurrentIcon;
+				
+				break;
+				
+				case 11: graphic =  hoverTurretIcon;
+				
+				break;
+				case 12: graphic =  fireHoverTurretIcon;
+				
+				break;
+				case 13: graphic =  iceHoverTurretIcon;
+				
+				break;
+				case 14: graphic =  vemonHoverTurretIcon;
+				
+				break;
+				case 15: graphic =  slowHoverTurretIcon;
+				
+				break;
+				
+				case 16: graphic =  houseBadgerIcon;
+				
+				break;
+				case 17: graphic =  burningHouseIcon;
+				
+				break;
+				case 18: graphic =  gasHouseIcon;
+				
+				break;
+				default:
+					graphic = removeIcon;
+					
+				break;
 			}
 		}
 		
@@ -133,5 +178,4 @@ package UiClasses
 			*/
 		}
 	}
-
 }
