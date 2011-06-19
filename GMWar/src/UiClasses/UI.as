@@ -3,6 +3,7 @@ package UiClasses
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import flash.events.MouseEvent;
+	import net.flashpunk.graphics.Text;
 
 	/**
 	 * ...
@@ -172,6 +173,12 @@ package UiClasses
 				
 			}
 		}
-	}
+		
+		public function get():void 
+		{
+			
+		}
+		
+	}	
 
 }
