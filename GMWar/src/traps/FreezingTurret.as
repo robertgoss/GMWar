@@ -1,15 +1,17 @@
-package traps
+package traps 
 {
-	/////////////////////////Trap Number 6/////////////////////
+	/////////////////////////Trap Number 7/////////////////////
+	import Effects.Cold;
     import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import net.flashpunk.graphics.Spritemap;
-    public class Turret extends Trap
+	
+    public class FreezingTurret extends Trap
     {
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
-        public function Turret(x_:int)
+        public function FreezingTurret(x_:int)
         {
             super(x_)
             image.y = -10;
@@ -17,7 +19,7 @@ package traps
 			graphic = image;
             damage = null;
             price = 10;
-            var pDam:Damage = new Damage("Normal",0,3,1,this);
+            var pDam:Damage = new Damage("ICE",0,12,1,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;
@@ -27,8 +29,9 @@ package traps
             blocking = false;
             lRap = 6
             rRap = -5
-			
+			effects.push(new Cold(x-7, y-5));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
         }
     }
+	
 }

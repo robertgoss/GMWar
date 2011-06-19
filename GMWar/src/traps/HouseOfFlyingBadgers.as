@@ -1,5 +1,6 @@
 package traps 
 {
+	/////////////////////////Trap Number 16/////////////////////
 	import Effects.Badger;
 	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.graphics.Image;
