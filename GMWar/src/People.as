@@ -11,6 +11,8 @@ package
     import net.flashpunk.graphics.Stamp;
 	import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Draw;
+
+    import Effects.Hurt;
 	
 	public class People extends Entity
 	{
@@ -414,6 +416,7 @@ package
         public function updateDamages():void
         {
             var newDamages:Array = []
+            var oldHealth:int = health;
             for each(var damage:Damage in damages)
             {
                 var hurt:int = damage.update()
@@ -422,7 +425,12 @@ package
                 {
                    newDamages.push(damage); 
                 }
-            }   
+            } 
+            var hDelta:int = oldHealth-health;  
+            if(hDelta!=0)
+            {
+                FP.world.add(new Hurt(x+20,y-60,hDelta))
+            }
             damages = newDamages;
         }
 
