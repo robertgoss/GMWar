@@ -16,7 +16,7 @@ package traps
             image.y = -120;
 			graphic = image;
             damage = null;
-            price = 10;
+            //price = 10;
             projectile = null;
             airbourne = false;
             tHeight = 112;

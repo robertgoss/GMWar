@@ -1,6 +1,7 @@
 package  
 {
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Text;
 	import net.flashpunk.World;
     import net.flashpunk.utils.Draw;
     import net.flashpunk.utils.Input;
@@ -77,7 +78,6 @@ package
             }
         }
 
-		/*
         public override function render():void
         {
             Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
@@ -88,7 +88,6 @@ package
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }
-		*/
 		
         public function floorHieght(x:int):int
         {

@@ -16,7 +16,6 @@ package traps
 			graphic = image;
 			super(x_);
             damage = new Damage("SLOW",1,25,0,this);
-            price = 10;
             projectile = null;
             airbourne = false;
             tHeight = 0;
