@@ -56,6 +56,7 @@ package
 			healthText = new Text("Health: " + health.toString(), 480, 50);
 			addGraphic(healthText);
             money = 1000;
+            music.loop();
 		}
 
         public override function begin():void
