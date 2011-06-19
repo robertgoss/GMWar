@@ -1,11 +1,14 @@
 package  
 {
+	import flash.events.TextEvent;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
     import net.flashpunk.utils.Draw;
     import net.flashpunk.utils.Input;
     import net.flashpunk.utils.Key;
 	import net.flashpunk.Sfx;
+	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Text;
 	import UiClasses.UI;
 
     import traps.Tarpit;
@@ -36,6 +39,8 @@ package
 		[Embed (source = 'Asserts/guiBackground_2.png')]
 		private static const BACKGROUND:Class
 		private var background:Image = new Image(BACKGROUND);
+		private var health:Number = 100;
+		private var text:Text;
 		
 		public function Environment() 
 		{
@@ -45,15 +50,17 @@ package
             yDiff = 350;
             //Add Floor
 			addGraphic(background, 0);
+			text = new Text("Health: " + health.toString(), 480, 50);
+			addGraphic(text);
 		}
 
         public override function begin():void
         {
             super.begin()
-            trapMgr.addTrap(new Turret(180));
-            trapMgr.addTrap(new Tarpit(780));
-            trapMgr.addTrap(new Wall(350));
-            trapMgr.addTrap(new TallWall(1010));
+            //trapMgr.addTrap(new Turret(180));
+            //trapMgr.addTrap(new Tarpit(780));
+            //trapMgr.addTrap(new Wall(350));
+            //trapMgr.addTrap(new TallWall(1010));
 			//music.loop();
 			
 			ui = new UI();
@@ -72,6 +79,8 @@ package
                 peopleMgr.update()
                 trapMgr.update()
             }
+			text.text = "Health: " + health.toString();
+			text.update();
         }
 
 		/*
@@ -89,6 +98,15 @@ package
         {
             return 200;
         }
+		
+		public function takeHealth(n:Number):void
+		{
+			health -= n;
+			if (health <= 0)
+			{
+				FP.world = new Instruction();
+			}
+		}
 		
 	}
 
