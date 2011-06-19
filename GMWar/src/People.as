@@ -16,9 +16,12 @@ package
 		[Embed(source = 'Asserts/personS.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER, 37, 54); 
+        [Embed(source = 'Asserts/hat.png')]
+		private const HAT:Class;
+		private var imageHat:Spritemap = new Spritemap(HAT, 12, 12); 
 		private var dead:Boolean;
 		private var trapOn:int;
-		public var flyingProp:Number;
+		public var flyingB:Boolean;
 		public var speed:Number;
 		public var climbProp:Number;
 		public var armour:Number;
@@ -62,7 +65,7 @@ package
 			speed = 1;
 			
             lastpaused = false;
-			flyingProp = 0;
+			flyingB = false;
 			climbProp = 0;
 			armour = 0;
             armourF = false;
@@ -263,11 +266,29 @@ package
 
         } 
 
-        
+        public function drawHat():void
+        {
+            if(moveState=="Walking")
+            {
+                Draw.graphic(imageHat,x-22,y-60)
+            }
+            if(moveState=="Climbing")
+            {
+                Draw.graphic(imageHat,x-34,y-58)
+            }
+            if(moveState=="Falling")
+            {
+                Draw.graphic(imageHat,x+24,y-58)
+            }
+        }
 
         public function singlerender():void
         {
             super.render();
+            if(flyingB)
+            {
+                drawHat();
+            }
             //Draw.line(x,y,x,y-100,0xFFFFFF)
             if(moveState=="Climbing")
             {
@@ -366,7 +387,13 @@ package
         public function setSeq(seq:Array):void
         {
             var person:People = this
-            person.flyingProp = seq[0];
+            if(seq[0]>7)
+            {
+                person.flyingB = true;
+            }else
+            {
+                person.flyingB = false
+            }
 		    person.speed = seq[1]*0.1+0.22;
 		    person.climbProp = seq[2];
 		    person.armour = seq[3];
@@ -397,7 +424,13 @@ package
         public function getSeq():Array
 		{
             var seq:Array = []
-            seq[0] = flyingProp;
+            if(flyingB)
+            {
+                seq[0] = 8
+            }else
+            {
+                seq[0] = 0
+            }
             seq[1] = speed*10 - 2.2;
             seq[2] = climbProp;
             seq[3] = armour;
