@@ -9,8 +9,6 @@ package traps
         [Embed(source = '../Asserts/pit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
-
-        public static var price:int = 200;
 		
         public function FirePit(x_:int)
         {
@@ -20,7 +18,6 @@ package traps
 			{
 				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y)))
 			}
-
             damage = new Damage("FIRE",1,8,0,this);
             projectile = null;
             airbourne = false;
