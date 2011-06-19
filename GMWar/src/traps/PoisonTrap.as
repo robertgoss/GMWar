@@ -10,6 +10,8 @@ package traps
         [Embed(source = '../Asserts/pit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
+
+        public static var price:int = 150;
 		
         public function PoisonTrap(x_:int)
         {

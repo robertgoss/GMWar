@@ -13,6 +13,8 @@ package traps
 		[Embed (source = '../Asserts/House.png')]
 		private static const IMAGE:Class;
 		private var image:Image = new Image(IMAGE);
+
+        public static var price:int = 200;
 		
 		public function GasHouse(x_:Number) 
 		{

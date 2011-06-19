@@ -8,6 +8,8 @@ package traps
         [Embed(source = '../Asserts/tarpit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
+
+        public static var price:int = 20;
 		
         public function Tarpit(x_:int)
         {
