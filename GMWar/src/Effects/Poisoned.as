@@ -1,6 +1,6 @@
 package Effects 
 {
-	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Stamp;
 	import net.flashpunk.FP;
 	
 	/**
@@ -11,7 +11,7 @@ package Effects
 	{
 		[Embed (source = '../Asserts/poison.png')]
 		private static const IMAGE:Class
-		private var image:Image = new Image(IMAGE);
+		private var image:Stamp = new Stamp(IMAGE);
 		private var p:People;
 		
 		public function Poisoned(xPos:Number,yPos:Number, person:People) 
