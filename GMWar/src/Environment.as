@@ -29,6 +29,8 @@ package
         public var paused:Boolean;
 		public var ui:UI;
 
+        public var money:int;
+
         public var yDiff:int
 		
 		//Background Music
@@ -40,7 +42,7 @@ package
 		private static const BACKGROUND:Class
 		private var background:Image = new Image(BACKGROUND);
 		private var health:Number = 100;
-		private var text:Text;
+		private var healthText:Text;
 		
 		public function Environment() 
 		{
@@ -50,8 +52,9 @@ package
             yDiff = 350;
             //Add Floor
 			addGraphic(background, 0);
-			text = new Text("Health: " + health.toString(), 480, 50);
-			addGraphic(text);
+			healthText = new Text("Health: " + health.toString(), 480, 50);
+			addGraphic(healthText);
+            money = 1000;
 		}
 
         public override function begin():void
@@ -79,8 +82,7 @@ package
                 peopleMgr.update()
                 trapMgr.update()
             }
-			text.text = "Health: " + health.toString();
-			text.update();
+			healthText.update();
         }
 
 		/*
@@ -89,6 +91,8 @@ package
             Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
             Draw.line(0,floorHieght(0)+yDiff,800,floorHieght(800)+yDiff,0xFFFFFF)
             super.render()
+
+            Draw.graphic(new Text(money.toString(),40,40))
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }
@@ -102,6 +106,7 @@ package
 		public function takeHealth(n:Number):void
 		{
 			health -= n;
+			healthText.text = "Health: " + health.toString();
 			if (health <= 0)
 			{
 				FP.world = new Instruction();

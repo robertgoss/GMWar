@@ -17,6 +17,12 @@ package
 
         public function addTrap(trap:Trap):Boolean
         {
+            if((FP.world as Environment).money-trap.price<0)
+            {
+                trap.clean();
+                return true;
+            } 
+            (FP.world as Environment).money -= trap.price;
             for each(var trapC:Trap in traps)
             {
                 if(trap.xTrue<(trapC.xTrue+2*trapC.tWidth))

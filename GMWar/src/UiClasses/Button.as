@@ -84,79 +84,98 @@ package UiClasses
 			
 			var tempGraphic:Graphic;
 			tempGraphic = iconImage;
+			var price:Text = new Text("0");
 
 			switch (trapNo) 
 			{
 				case 0: iconImage.frame = 0;
 				//Short wall
+				price = new Text(Wall.price.toString());
 					
 				break;
 				case 1: iconImage.frame = 1;
 				//Tall wall
+				price = new Text(TallWall.price.toString());
 					
 				break;
 				case 2: iconImage.frame = 2;
 				//Spike pit
+				price = new Text(SpikePit.price.toString());
 					
 				break;
 				case 3: iconImage.frame = 3;
 				//Flame pit
+				price = new Text(FirePit.price.toString());
 					
 				break;
 				case 4: iconImage.frame = 4;
 				//Gas pit
+				price = new Text(PoisonTrap.price.toString());
 					
 				break;
 				case 5: iconImage.frame = 5;
 				//Tar pit
+				price = new Text(Tarpit.price.toString());
 					
 				break;				
 				case 6: iconImage.frame = 6;
 				//Turret
+				price = new Text(Turret.price.toString());
 					
 				break;
 				case 7: iconImage.frame = 7;
 				//Flame turret
+				price = new Text(FlammingTurret.price.toString());
 					
 				break;
 				case 8: iconImage.frame = 8;
 				//Ice turret
+				price = new Text(FreezingTurret.price.toString());
 					
 				break;
 				case 9: iconImage.frame = 9;
 				//Poison turret
+				price = new Text(VemonTurret.price.toString());
 					
 				break;
 				case 10: iconImage.frame = 10;
 				//Large turret
+				price = new Text(LargeTurret.price.toString());
 				
 				break;				
 				case 11: iconImage.frame = 11;
 				//Hover turret
+				price = new Text(HoverTurret.price.toString());
 				
 				break;
 				case 12: iconImage.frame = 12;
 				//Hover flame turret
+				price = new Text(FlammingHoverTurret.price.toString());
 				
 				break;
 				case 13: iconImage.frame = 13;
 				//Hover ice turret
+				price = new Text(FreezingHoverTurret.price.toString());
 				
 				break;
 				case 14: iconImage.frame = 14;
 				//Hover poison turret
+				price = new Text(VemonHoverTurret.price.toString());
 				
 				break;				
 				case 15: iconImage.frame = 15;
 				//House of flying badgers
+				price = new Text(HouseOfFlyingBadgers.price.toString());
 				
 				break;
 				case 16: iconImage.frame = 16;
 				//Fire house
+				price = new Text(BurningHouse.price.toString());
 				
 				break;
 				case 17: iconImage.frame = 18;
 				//Poison house
+				price = new Text(GasHouse.price.toString());
 				
 				break; 
 				default: iconImage.frame = 19;
@@ -169,6 +188,7 @@ package UiClasses
 			tempGraphic.y = 23;
 			
 			addGraphic(tempGraphic);
+			addGraphic(price);
 			
 		}
 		

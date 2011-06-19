@@ -8,6 +8,8 @@ package traps
         [Embed(source = '../Asserts/lWall.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
+
+        public static var price:int = 50;
         public function TallWall(x_:int)
         {
             super(x_)
