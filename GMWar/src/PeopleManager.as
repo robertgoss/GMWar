@@ -10,6 +10,8 @@ package
 	{
         private var breedingPool:Array;
         private var currentPool:Array;
+
+        private var reload:int;
         		
 		public function PeopleManager() 
 		{
@@ -19,12 +21,15 @@ package
                 breedingPool.push(randomSeq());
             }
             currentPool = [];
+            reload = 600;
 		}
 		
 		public function update():void
 		{
-			if (FP.world.classCount(People) == 0)
-			{				
+            reload -= 1
+			if (reload==0 && FP.world.classCount(People) < 20)
+			{	
+                reload = 600;			
 				addWave();
 			}
 			removeDeadPeople();
