@@ -1,5 +1,6 @@
 package UiClasses 
 {
+	import flash.net.URLRequest;
 	import net.flashpunk.Entity;
 	import flash.events.MouseEvent;
 	import net.flashpunk.FP;
@@ -7,6 +8,16 @@ package UiClasses
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input
 	import net.flashpunk.graphics.Text;
+	import traps.BurningHouse;
+	import traps.FlammingHoverTurret;
+	import traps.FlammingTurret;
+	import traps.FreezingTurret;
+	import traps.GasHouse;
+	import traps.HouseOfFlyingBadgers;
+	import traps.HoverTurret;
+	import traps.LargeTurret;
+	import traps.SpikePit;
+	import traps.VemonTurret;
 
        import traps.Tarpit;
     import traps.Turret;
@@ -31,15 +42,14 @@ package UiClasses
 	  * 7 - Flaming Turret
 	  * 8 - Frezing Turret
 	  * 9 - Vemon Turret
-	  * 10 - Slowing Turret
+	  * 10 - Large
 	  * 11 - Hover Turret
 	  * 12 - Flamming Hover Turret
 	  * 13 - Freezing Hover Turret
 	  * 14 - Vemon Hover Turret
-	  * 15 - Slowing Hover Turret
-	  * 16 - House of Flying Badgers
-	  * 17 - Burning House
-	  * 18 - Gas House
+	  * 15 - House of Flying Badgers
+	  * 16 - Burning House
+	  * 17 - Gas House
 	  */ 
 	 
 	public class Button extends Entity 
@@ -190,7 +200,102 @@ package UiClasses
                         loseFocus();
                     }
                     break;
-                
+				case 2:
+                    if((FP.world as Environment).trapMgr.addTrap(new SpikePit(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 3:
+                    if((FP.world as Environment).trapMgr.addTrap(new FirePit(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 4:
+                    if((FP.world as Environment).trapMgr.addTrap(new PoisonTrap(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 5:
+                    if((FP.world as Environment).trapMgr.addTrap(new Tarpit(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 6:
+                    if((FP.world as Environment).trapMgr.addTrap(new Turret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 7:
+                    if((FP.world as Environment).trapMgr.addTrap(new FlammingTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 8:
+                    if((FP.world as Environment).trapMgr.addTrap(new FreezingTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 9:
+                    if((FP.world as Environment).trapMgr.addTrap(new VemonTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 10:
+                    if((FP.world as Environment).trapMgr.addTrap(new LargeTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 11:
+                    if((FP.world as Environment).trapMgr.addTrap(new HoverTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 12:
+                    if((FP.world as Environment).trapMgr.addTrap(new FlammingHoverTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 13:
+                    if((FP.world as Environment).trapMgr.addTrap(new FreezingHoverTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 14:
+                    if((FP.world as Environment).trapMgr.addTrap(new VemonHoverTurret(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 15:
+                    if((FP.world as Environment).trapMgr.addTrap(new HouseOfFlyingBadgers(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 16:
+                    if((FP.world as Environment).trapMgr.addTrap(new BurningHouse(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+				case 17:
+                    if((FP.world as Environment).trapMgr.addTrap(new GasHouse(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
             }
             
         }

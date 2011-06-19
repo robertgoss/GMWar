@@ -1,6 +1,6 @@
 package traps
 {
-	/////////////////////////Trap Number 2/////////////////////
+	/////////////////////////Trap Number 5/////////////////////
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Tarpit extends Trap
