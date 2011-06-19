@@ -24,7 +24,7 @@ package traps
             //price = 10;
             var pDam:Damage = new Damage("POISON",0,3,1,this);
             projectile = new Projectile(pDam,4,1,30,this);
-            airbourne = false;
+            airbourne = true;
             tHeight = 0;
             tWidth = 10;
             scalibility = false;
