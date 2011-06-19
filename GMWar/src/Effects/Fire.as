@@ -29,19 +29,12 @@ package  Effects
 		public function Fire(xPos:Number = 0, yPos:Number = 0)
 		{	
 			fireImage.add("Flames", [0, 1, 2], 10, true);
-			
-			/*emitter = new Emitter(new BitmapData(1, 1), 1, 1);
-			emitter.newType("Fire", [0]);
-			emitter.setAlpha("Fire", 1.0);
-			emitter.setMotion("Fire", 90, 20, 3, 0, 0, -0.5, Ease.bounceInOut);
-			emitter.setColor("Fire", 0xFF4600);
-			
-			graphic = new Graphiclist(fireImage, emitter);*/
 			graphic = fireImage;
 				
 			x = xPos;
 			y = yPos - fireImage.height;
 			width = fireImage.width;
+			layer = -1;
 			
 			FP.world.add(this);
 			fireImage.play("Flames");
@@ -49,15 +42,7 @@ package  Effects
 		
 		override public function update():void 
 		{
-			/*if (delay == 0)
-			{
-				emitter.emit("Fire", Math.random() * halfWidth, 0);
-				delay = 30;
-			}
-			else 
-			{
-				delay--;
-			}*/
+		
 		}
 	}
 	
