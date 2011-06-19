@@ -30,7 +30,7 @@ package traps
             blocking = false;
             lRap = 6
             rRap = -5
-			effects.push(new Fire(x-7, y-5));
+			effects.push(new Fire(x-3, y-5));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
         }
     }

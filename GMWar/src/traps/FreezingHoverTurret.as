@@ -30,7 +30,7 @@ package traps
             lRap = 6
             rRap = -5
 			yTrue -= 100;
-			effects.push(new Cold(x-7, y-5));
+			effects.push(new Cold(x-3, y-105));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
         }
     }
