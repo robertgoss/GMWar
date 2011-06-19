@@ -53,21 +53,27 @@ package
                 if(target)
                 {
                     target.addDamage(damage);
-                    cTargets.push(target)
+                    var point:Array = []
+                    point[0] = target.xTrue+20
+                    point[1] = target.yTrue-30
+                    if((FP.world as Environment).trapMgr.los(parent.xTrue,parent.yTrue-parent.tHeight,point[0],point[1]))
+                    {
+                        cTargets.push(point)
+                    }
                 }
             }
         }
 
         public function render():void
         {
-            for each(var target:People in cTargets)
+            for each(var target:Array in cTargets)
             {
                 if(parent.xTrue<800)
                 {
-                    Draw.line(parent.xTrue,parent.yTrue-parent.tHeight,target.xTrue-20,target.yTrue-30)
+                    Draw.line(parent.xTrue,parent.yTrue-parent.tHeight,target[0]-20,target[1]-30)
                 }else
                 {
-                    Draw.line(parent.xTrue-800,parent.yTrue-parent.tHeight-350,target.xTrue-800-20,target.yTrue+350-30)
+                    Draw.line(parent.xTrue-800,parent.yTrue-parent.tHeight-350,target[0]-800-20,target[1]+350-30)
                 }
             }
         }
