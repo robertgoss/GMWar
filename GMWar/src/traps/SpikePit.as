@@ -21,7 +21,7 @@ package traps
 			graphic = image;
 			super(x_);
 
-            damage = new Damage("NORMAL",1,12,0,this);
+            damage = new Damage("NORMAL",1,12,18,this);
             //price = 10;
             projectile = null;
             airbourne = false;
