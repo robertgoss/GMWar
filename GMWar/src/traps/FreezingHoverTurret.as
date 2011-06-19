@@ -5,6 +5,7 @@ package traps
     import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import net.flashpunk.graphics.Spritemap;
+	import Effects.Cold;
     public class FreezingHoverTurret extends Trap
     {
         [Embed(source = '../Asserts/Turret.png')]
