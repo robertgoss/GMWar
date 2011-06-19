@@ -47,6 +47,7 @@ package
             yDiff = 350;
             //Add Floor
 			addGraphic(background, 0);
+            money = 1000;
 		}
 
         public override function begin():void
