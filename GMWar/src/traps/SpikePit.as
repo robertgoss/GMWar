@@ -1,5 +1,6 @@
 package traps 
 {
+	/////////////////////////Trap Number 2/////////////////////
 	import Effects.Spike;
 	import net.flashpunk.graphics.Image;
 	

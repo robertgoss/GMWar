@@ -1,5 +1,6 @@
 package traps 
 {
+	/////////////////////////Trap Number 17/////////////////////
 	import Effects.Fire;
 	import net.flashpunk.graphics.Image;
 	
