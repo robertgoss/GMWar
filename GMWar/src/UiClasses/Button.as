@@ -7,6 +7,13 @@ package UiClasses
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.utils.Input
 	import net.flashpunk.graphics.Text;
+
+       import traps.Tarpit;
+    import traps.Turret;
+    import traps.FirePit;
+    import traps.PoisonTrap;
+    import traps.Wall;
+    import traps.TallWall;
 	
 	/**
 	 * ...
@@ -75,7 +82,7 @@ package UiClasses
 			trapNo = trap;
 			setHitbox(77, 77);
 			FP.stage.addEventListener(MouseEvent.CLICK, buttonClick);
-			
+			/*
 			switch (trapNo) 
 			{
 				case 0: graphic = wallIcon;
@@ -142,7 +149,7 @@ package UiClasses
 					graphic = removeIcon;
 					
 				break;
-			}
+			}*/
 		}
 		
 		public function buttonClick(e:MouseEvent=null):void
@@ -152,15 +159,52 @@ package UiClasses
 				clicked = true;
 				image.frame = 1;
 				UI.currentFocus = trapNo;
-				FP.stage.addEventListener(MouseEvent.CLICK, loseFocus);
+				FP.stage.addEventListener(MouseEvent.CLICK, attempt);
 			}
 		}
+
+        public function attempt(e:MouseEvent=null):void
+        {
+            var xTrue:int = Input.mouseX
+            var yTrue:int = Input.mouseY
+            if(y>300)
+            {
+                xTrue -= 800;
+                yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
+            }else
+            {
+                yTrue = (FP.world as Environment).floorHieght(xTrue);
+            }
+            switch(trapNo)
+            {
+                case -1:
+                    if((FP.world as Environment).trapMgr.removeTrapAt(xTrue,yTrue))
+                    {
+                        loseFocus();
+                    }
+                    break;
+                case 0:
+                    if((FP.world as Environment).trapMgr.addTrap(new Wall(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+                case 1:
+                    if((FP.world as Environment).trapMgr.addTrap(new TallWall(xTrue)))
+                    {
+                        loseFocus();
+                    }
+                    break;
+                
+            }
+            
+        }
 		
-		public function loseFocus(e:MouseEvent=null):void
+		public function loseFocus():void
 		{
 			clicked = false;
 			image.frame = 0;
-			FP.stage.removeEventListener(MouseEvent.CLICK, loseFocus);	
+			FP.stage.removeEventListener(MouseEvent.CLICK, attempt);	
 		}
 		
 		override public function update():void 

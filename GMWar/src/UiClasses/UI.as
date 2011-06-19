@@ -41,7 +41,7 @@ package UiClasses
 			{
 				if (i < 4)
 				{
-					buttons.push(new Button(38 + 91 + 155 * i));
+					buttons.push(new Button(38 + 91 + 155 * i,i));
 					FP.world.add(buttons[i] as Button);
 				}
 				else 
@@ -140,7 +140,7 @@ package UiClasses
 				{
 					(buttons[(arrayPosition - 1 + buttons.length) % buttons.length] as Button).x = 800;
 					
-					for (var i:int = 0; i < 4; i++)
+					for (i = 0; i < 4; i++)
 					{
 						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i;
 					}
@@ -151,7 +151,7 @@ package UiClasses
 				{
 					(buttons[(arrayPosition - 1 + buttons.length) % buttons.length] as Button).x = -61 + 190 * (1 - Math.cos(Math.PI * t))/2.0;
 					
-					for (var i:int = 0; i < 3; i++)
+					for (i = 0; i < 3; i++)
 					{
 						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i + 155 * (1 - Math.cos(Math.PI * t))/2.0;
 					}
@@ -178,7 +178,7 @@ package UiClasses
 				{
 					(buttons[arrayPosition] as Button).x = 129 - 190 * (1 - Math.cos(Math.PI * t))/2.0;
 					
-					for (var i:int = 1; i < 4; i++)
+					for (i = 1; i < 4; i++)
 					{
 						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i - 155 * (1 - Math.cos(Math.PI * t))/2.0;
 					}

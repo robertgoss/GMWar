@@ -15,11 +15,23 @@ package
 			traps = new Array();
 		}
 
-        public function addTrap(trap:Trap):void
+        public function addTrap(trap:Trap):Boolean
         {
+            for each(var trapC:Trap in traps)
+            {
+                if(trap.xTrue<(trapC.xTrue+trapC.tWidth))
+                {
+                    if((trap.tWidth+trap.xTrue)>(trapC.xTrue-trapC.tWidth))
+                    {
+                        return false;
+                    }
+                }
+            }
             FP.world.add(trap);
             traps.push(trap);
+            return true;
         }
+        
 
         public function removeTrap(trap:Trap):void
         { 
@@ -48,6 +60,22 @@ package
                 }
             }
             return null;
+        }
+        
+        public function removeTrapAt(x:int,y:int)
+        {
+            for each(var trap:Trap in traps)
+            {
+                if(x>trap.xTrue && x<trap.xTrue+2*trap.tWidth)
+                {
+                    if(y<=(FP.world as Environment).floorHieght(x))
+                    {
+                        removeTrap(trap)
+                        return true;
+                    }
+                }
+            }           
+            return false;
         }
     }
 
