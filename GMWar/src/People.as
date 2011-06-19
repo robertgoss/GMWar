@@ -112,14 +112,14 @@ package
             var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(xTrue)      
             if(trapNew==curTrap)
             {
-                if(curTrap!=null)
+                if(curTrap!=null && moveState!="Flying")
                 {
                     curTrap.onTrap(this)
                 }
             }else
             {
                 curTrap = trapNew;
-                if(curTrap!=null)
+                if(curTrap!=null && moveState!="Flying")
                 {
                     if(stratagy())
                     {
@@ -419,6 +419,10 @@ package
 				FP.world.remove(poisonEffect);
 				isPoisoned = false;
 			}
+            if(moveState=="Flying")
+            {
+                hurt = hurt *2
+            }
             health = health - hurt;
 			
 			if (health <= 0)
