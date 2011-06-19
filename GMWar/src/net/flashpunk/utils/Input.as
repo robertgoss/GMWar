@@ -4,6 +4,7 @@
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.ui.Keyboard;
+	import flash.ui.Mouse;
 	import net.flashpunk.*;
 	
 	/**
@@ -21,6 +22,11 @@
 		 * The last key pressed.
 		 */
 		public static var lastKey:int;
+		
+		/**
+		 * The mouse cursor. Set to "hide" to hide the cursor.
+		 */
+		public static var mouseCursor:String;
 		
 		/**
 		 * If the mouse button is down.
@@ -111,6 +117,7 @@
 		{
 			if (input is String)
 			{
+				if (! _control[input]) return false;
 				var v:Vector.<int> = _control[input],
 					i:int = v.length;
 				while (i --)
@@ -136,6 +143,7 @@
 		{
 			if (input is String)
 			{
+				if (! _control[input]) return false;
 				var v:Vector.<int> = _control[input],
 					i:int = v.length;
 				while (i --)
@@ -156,6 +164,7 @@
 		{
 			if (input is String)
 			{
+				if (! _control[input]) return false;
 				var v:Vector.<int> = _control[input],
 					i:int = v.length;
 				while (i --)
@@ -187,6 +196,7 @@
 				FP.stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 				FP.stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 				FP.stage.addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+				FP.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 				_enabled = true;
 			}
 		}
@@ -200,6 +210,17 @@
 			_releaseNum = 0;
 			if (mousePressed) mousePressed = false;
 			if (mouseReleased) mouseReleased = false;
+			
+			if (mouseCursor) {
+				if (mouseCursor == "hide") {
+					if (_mouseVisible) Mouse.hide();
+					_mouseVisible = false;
+				} else {
+					if (! _mouseVisible) Mouse.show();
+					if (Mouse.cursor != mouseCursor) Mouse.cursor = mouseCursor;
+					_mouseVisible = true;
+				}
+			}
 		}
 		
 		/**
@@ -222,14 +243,13 @@
 			
 			// update the keystring
 			if (code == Key.BACKSPACE) keyString = keyString.substring(0, keyString.length - 1);
-			else if ((code > 47 && code < 58) || (code > 64 && code < 91) || code == 32)
+			else if (e.charCode > 31 && e.charCode != 127) // 127 is delete
 			{
 				if (keyString.length > KEYSTRING_MAX) keyString = keyString.substring(1);
-				var char:String = String.fromCharCode(code);
-				if (e.shiftKey || Keyboard.capsLock) char = char.toLocaleUpperCase();
-				else char = char.toLocaleLowerCase();
-				keyString += char;
+				keyString += String.fromCharCode(e.charCode);
 			}
+			
+			if (code < 0 || code > 255) return;
 			
 			// update the keystate
 			if (!_key[code])
@@ -245,6 +265,9 @@
 		{
 			// get the keycode and update the keystate
 			var code:int = e.keyCode;
+			
+			if (code < 0 || code > 255) return;
+			
 			if (_key[code])
 			{
 				_key[code] = false;
@@ -279,6 +302,17 @@
 		    _mouseWheelDelta = e.delta;
 		}
 		
+		/** @private Event handler for mouse move events: only here for a bug workaround. */
+		private static function onMouseMove(e:MouseEvent):void
+		{
+			if (mouseCursor == "hide") {
+				Mouse.show();
+				Mouse.hide();
+			}
+			
+			FP.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		}
+		
 		// Max amount of characters stored by the keystring.
 		/** @private */ private static const KEYSTRING_MAX:uint = 100;
 		
@@ -292,5 +326,6 @@
 		/** @private */ private static var _releaseNum:int = 0;
 		/** @private */ private static var _control:Object = {};
 		/** @private */ private static var _mouseWheelDelta:int = 0;
+		/** @private */ private static var _mouseVisible:Boolean = true;
 	}
 }
