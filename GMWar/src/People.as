@@ -430,6 +430,7 @@ package
             var hDelta:int = oldHealth-health;  
             if(hDelta!=0)
             {
+                //yTrue += 10
                 FP.world.add(new Hurt(x+20,y-60,hDelta))
             }
             damages = newDamages;
@@ -450,7 +451,7 @@ package
             {
                 person.flyingB = false
             }
-		    person.speed = seq[1]*0.1+0.22;
+		    person.speed = seq[1]*0.1+0.42;
 		    person.climbProp = seq[2];
 		    person.armour = seq[3];
             person.health = 100 + 10*seq[4]
@@ -487,7 +488,7 @@ package
             {
                 seq[0] = 0
             }
-            seq[1] = speed*10 - 2.2;
+            seq[1] = speed*10 - 4.2;
             seq[2] = climbProp;
             seq[3] = armour;
             seq[4] = (health-100)*0.1;

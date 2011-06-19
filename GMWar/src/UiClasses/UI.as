@@ -21,8 +21,8 @@ package UiClasses
 		
 		// Details information		
 		public static var currentFocus:int = -1;
-		//public static var roledOver:int = -4;
-		//private var seq:Array;
+		public static var roledOver:int = -4;
+		private var seq:Array;
 		
 		// Drawing
 		public var details:Text;
@@ -186,19 +186,19 @@ package UiClasses
 					(buttons[(arrayPosition + 4) % buttons.length] as Button).x = 784 - 190 * (1 - Math.cos(Math.PI * t))/2.0;
 				}				
 			}
-			/*
+			
 			var atMouse:Entity = collide("Soldier", Input.mouseX, Input.mouseY);
 			if (atMouse != null)
 			{
 				roledOver = -1;
-				seq = (atMouse[0] as People).getSeq();
-				details.text = "Soldier Skills\nSpeed: " + seq[1] + "\nClimbing: " + seq[2] + "\nArmour" + seq[3];				
+				seq = (atMouse as People).getSeq();
+				details.text = "Soldier Skills\nSpeed: " + seq[1] + "\nClimbing: " + seq[2] + "\nArmour: " + seq[3];				
 			}
 			else
 			{
 				roledOver = -4;
 				details.text = "";
-			}*/
+			}
 		}
 		
 	}	

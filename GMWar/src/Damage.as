@@ -1,6 +1,7 @@
 package  
 {
     import net.flashpunk.Entity
+    import net.flashpunk.FP
     
 	public class Damage
     {
@@ -68,11 +69,19 @@ package
             {
                 alive = false;
             }
+            if(FP.rand(prob)!=0)
+            {
+                return 0;
+            }
             if(type=="FIRE")
             {
                 return 0;
             }
             if(type=="POISON")
+            {
+                return 0;
+            }
+            if(type=="SLOW")
             {
                 return 0;
             }
