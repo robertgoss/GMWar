@@ -8,6 +8,7 @@ package
 	import net.flashpunk.Graphic;
 	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.graphics.Image;
+    import net.flashpunk.graphics.Stamp;
 	import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Draw;
 	
@@ -16,9 +17,18 @@ package
 		[Embed(source = 'Asserts/personS.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER, 37, 54); 
+        [Embed(source = 'Asserts/mittensS.png')]
+		private const MITS:Class;
+		private var imageM:Spritemap = new Spritemap(MITS, 37, 54); 
         [Embed(source = 'Asserts/hat.png')]
 		private const HAT:Class;
 		private var imageHat:Spritemap = new Spritemap(HAT, 12, 12); 
+        [Embed(source = 'Asserts/specsS.png')]
+		private const SPEC:Class;
+		private var imageSpec:Stamp = new Stamp(SPEC, 12, 12); 
+        [Embed(source = 'Asserts/specsS2.png')]
+		private const SPEC2:Class;
+		private var imageSpec2:Stamp = new Stamp(SPEC2, 12, 12); 
 		private var dead:Boolean;
 		private var trapOn:int;
 		public var flyingB:Boolean;
@@ -53,6 +63,11 @@ package
             image.add("climb", [ 10, 11, 12, 13, 14], 15, true);
             image.y = -54;
             image.x = -36;
+            imageM.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            imageM.add("climb", [ 10, 11, 12, 13, 14], 15, true);
+            imageM.add("fall", [ 15, 16, 17, 18, 19], 15, true);
+            imageM.y = -54;
+            imageM.x = -36;
 			graphic = image;
 			x = xPos as Number;
             xTrue = x;
@@ -78,6 +93,7 @@ package
             curTrap = null;
 
 			image.play("run");
+            imageM.play("run");
             moveState = "Walking"
 			
 			poisonEffect = new Poisoned(x-37, y-image.height, this);
@@ -146,9 +162,11 @@ package
             if(image.rate==0)
             {
                 image.rate=1;
+                imageM.rate=1;
             }else
             {
                 image.rate=0;
+                imageM.rate=0;
             }
         }
 		
@@ -214,6 +232,7 @@ package
         public function startWalking():void
         {
             image.play("run")
+            imageM.play("run")
             moveState = "Walking";
         }
 
@@ -235,6 +254,7 @@ package
         public function startClimbing():void
         {
             image.play("climb")
+            imageM.play("climb")
             moveState = "Climbing";
             xTrue += curTrap.lRap
             cableHeightTrue = floor()-curTrap.tHeight;
@@ -249,16 +269,19 @@ package
                 xTrue += 36;
                 startWalking();
                 image.x = -37;
+                imageM.x = -37
             }
         }
 
         public function startFalling():void
         {
             image.play("fall")
+            imageM.play("fall")
             moveState = "Falling";
             cableHeightTrue = yTrue;
             yTrue += 50;
-            image.x = 0
+            image.x = 0;
+            imageM.x = 0;
         }
 
         public function flying():void
@@ -282,12 +305,38 @@ package
             }
         }
 
+        public function drawSpecs():void
+        {
+            if(moveState=="Walking")
+            {
+                Draw.graphic(imageSpec,x-28,y-63)
+            }
+            if(moveState=="Climbing")
+            {
+                Draw.graphic(imageSpec,x-40,y-63)
+            }
+            if(moveState=="Falling")
+            {
+                Draw.graphic(imageSpec2,x+10,y-63)
+            }
+        }
+
+
         public function singlerender():void
         {
             super.render();
+            imageM.update();
             if(flyingB)
             {
                 drawHat();
+            }
+            if(armourF)
+            {
+                drawSpecs();
+            }
+            if(armourF)
+            {
+                Draw.graphic(imageM,x,y)
             }
             //Draw.line(x,y,x,y-100,0xFFFFFF)
             if(moveState=="Climbing")
