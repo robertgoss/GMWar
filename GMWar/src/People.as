@@ -112,14 +112,14 @@ package
             var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(xTrue)      
             if(trapNew==curTrap)
             {
-                if(curTrap!=null)
+                if(curTrap!=null && moveState!="Flying")
                 {
                     curTrap.onTrap(this)
                 }
             }else
             {
                 curTrap = trapNew;
-                if(curTrap!=null)
+                if(curTrap!=null && moveState!="Flying")
                 {
                     if(stratagy())
                     {
