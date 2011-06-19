@@ -22,7 +22,7 @@ package traps
 			graphic = image;
             damage = null;
             //price = 10;
-            var pDam:Damage = new Damage("POISON",0,3,1,this);
+            var pDam:Damage = new Damage("POISON",1,6,3,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = true;
             tHeight = 0;
