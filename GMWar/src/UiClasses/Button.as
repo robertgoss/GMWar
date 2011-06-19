@@ -191,7 +191,7 @@ package UiClasses
                 loseFocus();
                 return;
             }
-            if(y>300)
+            if(yTrue>300)
             {
                 xTrue += 800;
                 yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
