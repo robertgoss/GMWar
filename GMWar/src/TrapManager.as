@@ -61,6 +61,31 @@ package
             }
             return null;
         }
+
+        public function los(x1,y1,x2,y2):Boolean
+        {
+            if(x1>x2)
+            {
+                var t:int = x2
+                x2 = x1
+                x1 = t
+                t = y2
+                y2 = y1
+                y1 = t
+            }
+            for each(var trap:Trap in traps)
+            {
+                if(trap.xTrue<x2)
+                {
+                    if(trap.xTrue+2*trap.tWidth>x1)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+		
         
         public function removeTrapAt(x:int,y:int)
         {
