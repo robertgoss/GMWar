@@ -148,7 +148,7 @@ package UiClasses
 				
 				if (t <= -1)
 				{
-					for (var i:int -3; i < 0; i++)
+					for (var i:int = -3; i < 0; i++)
 					{
 						(buttons[(arrayPosition + i + buttons.length) % buttons.length] as Button).x = 800;
 					}
