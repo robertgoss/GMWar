@@ -84,7 +84,7 @@ package UiClasses
 			
 			var tempGraphic:Graphic;
 			tempGraphic = iconImage;
-			var price:Text;
+			var price:Text = new Text("0");
 
 			switch (trapNo) 
 			{
