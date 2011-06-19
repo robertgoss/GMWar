@@ -1,5 +1,6 @@
 package traps
 {
+	/////////////////////////Trap Number 4/////////////////////
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import Effects.Gas;
@@ -27,6 +28,8 @@ package traps
             scalibility = false;
             conApply = true;
             blocking = false;
+			
+			setHitbox (image.scaledWidth, image.scaledHeight);
         }
 		
     }
