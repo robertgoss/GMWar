@@ -33,7 +33,7 @@ package
 		private var imageSpec2:Stamp = new Stamp(SPEC2, 12, 12); 
 		private var dead:Boolean;
 		private var trapOn:int;
-		public var flyingB:Boolean;
+		public var flyingP:Number;
 		public var speed:Number;
 		public var climbProp:Number;
 		public var armour:Number;
@@ -77,13 +77,15 @@ package
 			y = yPos;
             yTrue = y;
 
+            imageHat.add("spin", [ 0, 1], 15, true);
+            imageHat.play("spin")
 			dead = false;
 			
 			//Norm person set-up
 			speed = 1;
 			
             lastpaused = false;
-			flyingB = false;
+			flyingP = 5;
 			climbProp = 0;
 			armour = 0;
             armourF = false;
@@ -95,7 +97,7 @@ package
 
             curTrap = null;
 
-			startWalking();
+			startFlying();
 			
 			poisonEffect = new Poisoned(x-37, y-image.height, this);
 		}
@@ -125,7 +127,7 @@ package
                     }
                 }else
                 {
-                    if(yTrue!=floor())
+                    if(yTrue!=floor() && moveState!="Flying")
                     {
                         startFalling();
                     }
@@ -135,10 +137,22 @@ package
 
         public function stratagy():Boolean
         {
+            if(moveState=="Flying")
+            {
+                return false;
+            }
             if(curTrap.blocking)
             {
                 startClimbing();
                 return false;
+            }
+            if(curTrap.scalibility)
+            {
+                if(FP.rand(15)<climbProp)
+                {
+                    startClimbing();
+                    return false;
+                }
             }
             return true;
         }
@@ -184,6 +198,8 @@ package
             {
                  return;
             }
+
+            imageHat.update();
 
               
 			//Check if decsion is needed
@@ -288,23 +304,29 @@ package
 
         public function flying():void
         {
+            if(xTrue > flyingP)
+            {
+                yTrue += speed*0.7;
+                if(yTrue>floor())
+                {
+                    yTrue = floor()
+                    startWalking()
+                }
+            }else
+            {
+                xTrue += speed*2.2;
+            }
+        } 
 
+        public function startFlying():void
+        {
+            moveState = "Flying"
+            yTrue -= 130;
         } 
 
         public function drawHat():void
         {
-            if(moveState=="Walking")
-            {
-                Draw.graphic(imageHat,x-22,y-60)
-            }
-            if(moveState=="Climbing")
-            {
-                Draw.graphic(imageHat,x-34,y-58)
-            }
-            if(moveState=="Falling")
-            {
-                Draw.graphic(imageHat,x+24,y-58)
-            }
+            Draw.graphic(imageHat,x-22,y-60)
         }
 
         public function drawSpecs():void
@@ -327,7 +349,7 @@ package
         {
             super.render();
             imageM.update();
-            if(flyingB)
+            if(moveState=="Flying")
             {
                 drawHat();
             }
@@ -368,7 +390,7 @@ package
             }
         }
 
-        public function harm(hurt:int,damage:Damage):void
+        public function harm(hurt:Number,damage:Damage):void
         {
             hurt = hurt - armour
             if(hurt<0)
@@ -442,13 +464,7 @@ package
         public function setSeq(seq:Array):void
         {
             var person:People = this
-            if(seq[0]>7)
-            {
-                person.flyingB = true;
-            }else
-            {
-                person.flyingB = false
-            }
+            person.flyingP = (1600*seq[0]/15)
 		    person.speed = seq[1]*0.1+0.42;
 		    person.climbProp = seq[2];
 		    person.armour = seq[3]*0.2;
@@ -479,13 +495,7 @@ package
         public function getSeq():Array
 		{
             var seq:Array = []
-            if(flyingB)
-            {
-                seq[0] = 8
-            }else
-            {
-                seq[0] = 0
-            }
+            seq[0] = (15*flyingP)/1600
             seq[1] = speed*10 - 4.2;
             seq[2] = climbProp;
             seq[3] = armour*5;

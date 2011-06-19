@@ -27,6 +27,7 @@ package Effects
 			x = xPos;
 			y = yPos-image.height;
             image.play("Gas");
+			layer = -1;
 		}
 		
 		override public function update():void 

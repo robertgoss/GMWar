@@ -1,5 +1,6 @@
 package traps 
 {
+	import Effects.Gas;
 	import net.flashpunk.graphics.Image;
 	
 	/**
@@ -8,10 +9,13 @@ package traps
 	 */
 	public class GasHouse extends Trap
 	{
-		private var image:Image;
+		[Embed (source = '../Asserts/House.png')]
+		private static const IMAGE:Class;
+		private var image:Image = new Image(IMAGE);
 		
 		public function GasHouse(x_:Number) 
 		{
+			image.y = -image.height;
 			graphic = image;
 			super(x_);
 
@@ -24,8 +28,10 @@ package traps
             scalibility = true;
             conApply = true;
             blocking = false;
-			
+			effects.push(new Gas(x + 12, y - 20));
+			effects.push(new Gas(x+47, y-20));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			layer = -1;
 		}
 		
 	}

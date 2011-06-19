@@ -13,10 +13,11 @@ package traps
         {
             super(x_)
             image.y = -10;
+            image.x = -5;
 			graphic = image;
             damage = null;
             price = 10;
-            var pDam:Damage = new Damage("Normal",1,3,1,this);
+            var pDam:Damage = new Damage("Normal",0,3,1,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;
