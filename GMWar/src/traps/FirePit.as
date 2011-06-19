@@ -9,6 +9,8 @@ package traps
         [Embed(source = '../Asserts/pit.png')]
 		private const PLAYER:Class;
 		private var image:Image = new Image(PLAYER);
+
+        public static var price:int = 200;
 		
         public function FirePit(x_:int)
         {
