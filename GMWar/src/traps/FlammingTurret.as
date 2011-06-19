@@ -12,6 +12,8 @@ package traps
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
+
+        public static var price = 125;
         public function FlammingTurret(x_:int)
         {
             super(x_)
