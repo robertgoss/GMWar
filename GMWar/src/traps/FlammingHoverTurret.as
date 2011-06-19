@@ -2,6 +2,7 @@ package traps
 {
 	
 	/////////////////////////Trap Number 6/////////////////////
+	import Effects.Fire;
     import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import net.flashpunk.graphics.Spritemap;

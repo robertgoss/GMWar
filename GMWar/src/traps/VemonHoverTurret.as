@@ -5,6 +5,7 @@ package traps
     import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     import net.flashpunk.graphics.Spritemap;
+	import Effects.Gas;
     public class VemonHoverTurret extends Trap
     {
         [Embed(source = '../Asserts/Turret.png')]

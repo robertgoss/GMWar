@@ -19,7 +19,7 @@ package UiClasses
 		public function Scroll(x_:int,right:Boolean, callback:Function) 
 		{
 			graphic = image;
-			layer = -1;
+			layer = -30;
 			super(x_, 247);
 			if (right)
 			{
