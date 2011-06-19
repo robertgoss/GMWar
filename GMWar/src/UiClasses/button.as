@@ -40,11 +40,6 @@ package UiClasses
 			}
 		}
 		
-		public function scroll(xDist:int):void
-		{
-			x += xDist;
-		}
-		
 		public function buttonClick(e:MouseEvent=null):void
 		{
 			if (collidePoint(x, y, Input.mouseX, Input.mouseY))
@@ -66,6 +61,7 @@ package UiClasses
 		override public function update():void 
 		{
 			super.update();
+			/*
 			if (collidePoint(x, y, Input.mouseX, Input.mouseY))
 			{
 				if (roleOver != null)
@@ -74,6 +70,7 @@ package UiClasses
 					roleOver();
 				}
 			}
+			*/
 		}
 	}
 

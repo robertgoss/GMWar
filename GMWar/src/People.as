@@ -58,6 +58,7 @@ package
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
+			type = "Soldier";
 			image.add("run", [ 0, 1, 2, 3, 4], 15, true);
             image.add("fall", [ 5, 6, 7, 8, 9], 15, true);
             image.add("climb", [ 10, 11, 12, 13, 14], 15, true);
@@ -92,9 +93,7 @@ package
 
             curTrap = null;
 
-			image.play("run");
-            imageM.play("run");
-            moveState = "Walking"
+			startWalking();
 			
 			poisonEffect = new Poisoned(x-37, y-image.height, this);
 		}
@@ -234,6 +233,7 @@ package
             image.play("run")
             imageM.play("run")
             moveState = "Walking";
+			setHitbox(15,14,22,54);
         }
 
         public function climbing():void
@@ -258,6 +258,7 @@ package
             moveState = "Climbing";
             xTrue += curTrap.lRap
             cableHeightTrue = floor()-curTrap.tHeight;
+			setHitbox(15, 14, 36, 54);
         }
 
         public function falling():void
@@ -282,6 +283,7 @@ package
             yTrue += 50;
             image.x = 0;
             imageM.x = 0;
+			setHitbox(15, 14, -22, 54);
         }
 
         public function flying():void
@@ -320,7 +322,6 @@ package
                 Draw.graphic(imageSpec2,x+10,y-63)
             }
         }
-
 
         public function singlerender():void
         {
@@ -424,9 +425,7 @@ package
                 }
             }   
             damages = newDamages;
-        }
-
-      
+        }      
 		
 		public function IsDead():Boolean
 		{
