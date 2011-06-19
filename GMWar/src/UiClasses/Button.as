@@ -174,7 +174,7 @@ package UiClasses
             var yTrue:int = Input.mouseY
             if(y>300)
             {
-                xTrue -= 800;
+                xTrue += 800;
                 yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
             }else
             {
