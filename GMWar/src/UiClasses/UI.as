@@ -46,7 +46,7 @@ package UiClasses
 				}
 				else 
 				{
-					buttons.push(new Button(800));
+					buttons.push(new Button(800,i));
 					FP.world.add(buttons[i] as Button);
 				}
 			}

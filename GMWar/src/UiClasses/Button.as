@@ -59,12 +59,11 @@ package UiClasses
 		private var fireTurretIcon:Image;
 		private var freezingTurretIcon:Image;
 		private var vemonTurretIcon:Image;
-		private var slowTurrentIcon:Image;
+		private var heavyTurrentIcon:Image;
 		private var hoverTurretIcon:Image;
 		private var fireHoverTurretIcon:Image;
 		private var iceHoverTurretIcon:Image;
 		private var vemonHoverTurretIcon:Image;
-		private var slowHoverTurretIcon:Image;
 		private var houseBadgerIcon:Image;
 		private var burningHouseIcon:Image;
 		private var gasHouseIcon:Image;
@@ -79,6 +78,7 @@ package UiClasses
 		{
 			super(x_, 260, image);
 			image.frame = 0;
+			layer = -5;
 			trapNo = trap;
 			setHitbox(77, 77);
 			FP.stage.addEventListener(MouseEvent.CLICK, buttonClick);
@@ -102,8 +102,7 @@ package UiClasses
 				break;
 				case 5: graphic = tarPitIcon;
 					
-				break;
-				
+				break;				
 				case 6: graphic = turretIcon;
 					
 				break;
@@ -116,10 +115,9 @@ package UiClasses
 				case 9: graphic = vemonTurretIcon;
 					
 				break;
-				case 10: graphic =  slowTurrentIcon;
+				case 10: graphic =  heavyTurrentIcon;
 				
-				break;
-				
+				break;				
 				case 11: graphic =  hoverTurretIcon;
 				
 				break;
@@ -132,19 +130,16 @@ package UiClasses
 				case 14: graphic =  vemonHoverTurretIcon;
 				
 				break;
-				case 15: graphic =  slowHoverTurretIcon;
+				
+				case 15: graphic =  houseBadgerIcon;
 				
 				break;
-				
-				case 16: graphic =  houseBadgerIcon;
-				
-				break;
-				case 17: graphic =  burningHouseIcon;
+				case 16: graphic =  burningHouseIcon;
 				
 				break;
-				case 18: graphic =  gasHouseIcon;
+				case 17: graphic =  gasHouseIcon;
 				
-				break;
+				break; 
 				default:
 					graphic = removeIcon;
 					
