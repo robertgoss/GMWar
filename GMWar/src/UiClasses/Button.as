@@ -186,9 +186,14 @@ package UiClasses
         {
             var xTrue:int = Input.mouseX
             var yTrue:int = Input.mouseY
+            if(y>250 && y< 350)
+            {
+                loseFocus();
+                return;
+            }
             if(y>300)
             {
-                xTrue -= 800;
+                xTrue += 800;
                 yTrue = (FP.world as Environment).floorHieght(xTrue)+350;
             }else
             {
