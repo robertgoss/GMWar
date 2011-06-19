@@ -11,19 +11,15 @@ package traps
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
-
-        public static var price:int = 125;
-
         public function FlammingHoverTurret(x_:int)
         {
-           
             super(x_)
             image.y = -10;
             image.x = 0;
 			graphic = image;
             damage = null;
             price = 10;
-            var pDam:Damage = new Damage("FIRE",0,12,5,this);
+            var pDam:Damage = new Damage("FIRE",1,12,2,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;

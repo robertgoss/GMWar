@@ -13,15 +13,13 @@ package traps
 		[Embed (source = '../Asserts/House.png')]
 		private static const IMAGE:Class;
 		private var image:Image = new Image(IMAGE);
-
-        public static var price:int = 200;
 		
 		public function BurningHouse(x_:Number) 
 		{
 			image.y = -image.height;
 			graphic = image;
 			super(x_);
-            damage = new Damage("FIRE",1,8,5,this);
+            damage = new Damage("FIRE",1,8,2,this);
             price = 10;
             projectile = null;
             airbourne = false;
