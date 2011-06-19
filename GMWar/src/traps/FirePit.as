@@ -22,7 +22,6 @@ package traps
 			}
 
             damage = new Damage("FIRE",1,8,0,this);
-            price = 10;
             projectile = null;
             airbourne = false;
             tHeight = 0;

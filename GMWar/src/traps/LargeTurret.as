@@ -21,7 +21,7 @@ package traps
 			image.scale = 2.0;
 			graphic = image;
             damage = null;
-            price = 10;
+            //price = 10;
             var pDam:Damage = new Damage("Normal",0,20,1,this);
             projectile = new Projectile(pDam,80,1,30,this);
             airbourne = false;
