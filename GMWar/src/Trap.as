@@ -133,6 +133,14 @@ package
             }
         } 
 
+        public function clean():void
+        {
+            for each(var ef:Entity in effects)
+            {
+                FP.world.remove(ef)
+            }
+        }
+
         public function onTrapFirst(person:People):void
         {
             if(damage!=null)

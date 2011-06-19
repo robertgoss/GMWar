@@ -35,6 +35,7 @@ package
 
         public function removeTrap(trap:Trap):void
         { 
+            trap.clean();
 		    FP.world.remove(trap);
             getTraps();
 	    }
