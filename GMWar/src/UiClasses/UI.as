@@ -119,7 +119,7 @@ package UiClasses
 					(buttons[(arrayPosition - 2 + buttons.length) % buttons.length] as Button).x = 800;
 					arrayPosition = (arrayPosition - 3 + buttons.length) % buttons.length;
 					
-					for (var i:int = 0; i < 4; i++)
+					for (i = 0; i < 4; i++)
 					{
 						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i;
 					}
@@ -144,56 +144,67 @@ package UiClasses
 			}
 			else if (t < 0)
 			{				
-				t -= 1 / 60.0;
-				
-				if (t <= 0)
-				{
-					(buttons[(arrayPosition - 1 + buttons.length) % buttons.length] as Button).x = 800;
-					
-					for (i = 0; i < 4; i++)
-					{
-						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i;
-					}
-					
-					t = 0;
-				}
-				else
-				{
-					(buttons[(arrayPosition - 1 + buttons.length) % buttons.length] as Button).x = -61 + 190 * (1 - Math.cos(Math.PI * t))/2.0;
-					
-					for (i = 0; i < 3; i++)
-					{
-						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i + 155 * (1 - Math.cos(Math.PI * t))/2.0;
-					}
-					
-					(buttons[(arrayPosition + 3) % buttons.length] as Button).x = 594 + 190 * (1 - Math.cos(Math.PI * t))/2.0;
-				}
-				
-			}
-			else if (t > 0)
-			{
 				t += 1 / 60.0;
 				
 				if (t <= -1)
 				{
-					(buttons[(arrayPosition + 4) % buttons.length] as Button).x = 800;
+					for (var i:int -3; i < 0; i++)
+					{
+						(buttons[(arrayPosition + i + buttons.length) % buttons.length] as Button).x = 800;
+					}
 					
 					for (var i:int = 0; i < 4; i++)
 					{
 						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i;
 					}
+					
 					t = 0;
 				}
 				else
 				{
-					(buttons[arrayPosition] as Button).x = 129 - 190 * (1 - Math.cos(Math.PI * t))/2.0;
+					for (i = 0; i < 3; i++)
+					{
+						(buttons[arrayPosition+i] as Button).x = 129 + 155 * i - (190 + 155 * 3) * (1 - Math.cos(Math.PI * t)) / 2.0;
+					}
+					
+					(buttons[(arrayPosition + 3) % buttons.length] as Button).x = 38 + 91 + 155 * 3 - 155 * 3 * (1 - Math.cos(Math.PI * t))/2.0;
+					
+					for (i = 4; i < 7; i++)
+					{
+						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 319 + 155 * i - (190 + 155 * 3) * (1 - Math.cos(Math.PI * t))/2.0;
+					}
+				}
+				
+			}
+			else if (t > 0)
+			{
+				t -= 1 / 60.0;
+				
+				if (t >= 1)
+				{					
+					for (i = 0; i < 4; i++)
+					{
+						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i;
+					}
+					for (i = 4; i < 8; i++)
+					{
+						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 800;
+					}
+					t = 0;
+				}
+				else
+				{
+					for (i = -3; i < 0; i++)
+					{
+						(buttons[(arrayPosition+i + buttons.length) % buttons.length] as Button).x = -61 + 155 * i + (190 + 155 * 3) * (1 - Math.cos(Math.PI * t)) / 2.0;
+					}
+					
+				(buttons[(arrayPosition) % buttons.length] as Button).x = 38 + 91 + 155 * 3 * (1 - Math.cos(Math.PI * t))/2.0;
 					
 					for (i = 1; i < 4; i++)
 					{
-						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 38 + 91 + 155 * i - 155 * (1 - Math.cos(Math.PI * t))/2.0;
-					}
-					
-					(buttons[(arrayPosition + 4) % buttons.length] as Button).x = 784 - 190 * (1 - Math.cos(Math.PI * t))/2.0;
+						(buttons[(arrayPosition + i) % buttons.length] as Button).x = 129 + 155*i  + (190 + 155 * 3) * (1 - Math.cos(Math.PI * t))/2.0;
+					}					
 				}				
 			}
 			
