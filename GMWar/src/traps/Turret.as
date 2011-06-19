@@ -16,7 +16,7 @@ package traps
 			graphic = image;
             damage = null;
             price = 10;
-            var pDam:Damage = new Damage("Normal",2,1,1,this);
+            var pDam:Damage = new Damage("Normal",3,1,1,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;
