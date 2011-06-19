@@ -21,7 +21,7 @@ package UiClasses
 		private var clicked:Boolean = false;
 		private var trapNo:int;
 		
-		public function button(x_:int, trap:int = -1) 
+		public function Button(x_:int, trap:int = -1) 
 		{
 			super(x_, 260, image);
 			image.frame = 0;
@@ -47,10 +47,13 @@ package UiClasses
 		
 		public function buttonClick(e:MouseEvent=null):void
 		{
-			clicked = true;
-			image.frame = 1;
-			UI.currentFocus = trapNo;
-			FP.stage.addEventListener(MouseEvent.CLICK, loseFocus);
+			if (collidePoint(x, y, Input.mouseX, Input.mouseY))
+			{
+				clicked = true;
+				image.frame = 1;
+				UI.currentFocus = trapNo;
+				FP.stage.addEventListener(MouseEvent.CLICK, loseFocus);
+			}
 		}
 		
 		public function loseFocus(e:MouseEvent=null):void

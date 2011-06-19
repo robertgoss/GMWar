@@ -69,6 +69,7 @@ package
                 peopleMgr.update()
                 trapMgr.update()
             }
+			ui.update();
         }
 
 		/*
