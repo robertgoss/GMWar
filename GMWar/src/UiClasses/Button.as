@@ -12,12 +12,14 @@ package UiClasses
 	import traps.BurningHouse;
 	import traps.FlammingHoverTurret;
 	import traps.FlammingTurret;
+	import traps.FreezingHoverTurret;
 	import traps.FreezingTurret;
 	import traps.GasHouse;
 	import traps.HouseOfFlyingBadgers;
 	import traps.HoverTurret;
 	import traps.LargeTurret;
 	import traps.SpikePit;
+	import traps.VemonHoverTurret;
 	import traps.VemonTurret;
 
        import traps.Tarpit;
