@@ -10,6 +10,8 @@ package
 	{
         private var breedingPool:Array;
         private var currentPool:Array;
+
+        private var reload:int;
         		
 		public function PeopleManager() 
 		{
@@ -19,12 +21,15 @@ package
                 breedingPool.push(randomSeq());
             }
             currentPool = [];
+            reload = 0;
 		}
 		
 		public function update():void
 		{
-			if (FP.world.classCount(People) == 0)
-			{				
+            reload -= 1
+			if (reload<0 && FP.world.classCount(People) < 20)
+			{	
+                reload = 1000;			
 				addWave();
 			}
 			removeDeadPeople();
@@ -63,9 +68,9 @@ package
 			FP.world.getClass(People, temp);
 			for each (var person:People in temp) 
 			{
-                if(person.x >= x1)
+                if(person.xTrue >= x1)
                 {
-                    if(person.x <= x2)
+                    if(person.xTrue <= x2)
                     {
                         between.push(person)
                     }
@@ -175,7 +180,16 @@ package
             for(i=0;i<8;i++)
             {
                 seq[i] = seq[i] * 32 / s
+                if(seq[i]<0)
+                {
+                    seq[i] = 0
+                }
+                if(seq[i]>15)
+                {
+                    seq[i] = 15
+                }
             }
+            
             var person:People = new People();
             person.setSeq(seq)
             return person;

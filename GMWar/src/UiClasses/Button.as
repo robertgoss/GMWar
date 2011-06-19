@@ -86,7 +86,6 @@ package UiClasses
 				case 2: graphic = spikePitIcon;
 					
 				break;
-				
 				case 3: graphic = firePitIcon;
 					
 				break;
@@ -177,5 +176,4 @@ package UiClasses
 			*/
 		}
 	}
-
 }

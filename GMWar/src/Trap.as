@@ -68,10 +68,15 @@ package
                 return y
             }
         }
+
         
 
         public override function render():void
         {
+            if(projectile!=null)
+            {
+                projectile.render();
+            }
             if(xTrue>750)
             {
                 x = xTrue - 800;
@@ -107,6 +112,7 @@ package
             super.update()
             if(projectile!=null)
             {
+                projectile.parent = this;
                 projectile.update()
             }
 			
