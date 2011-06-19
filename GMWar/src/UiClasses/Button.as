@@ -186,7 +186,7 @@ package UiClasses
         {
             var xTrue:int = Input.mouseX
             var yTrue:int = Input.mouseY
-            if(y>250 && y< 350)
+            if(yTrue>250 && yTrue< 350)
             {
                 loseFocus();
                 return;
