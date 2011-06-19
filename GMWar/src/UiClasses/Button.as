@@ -49,6 +49,7 @@ package UiClasses
 		private var turretIcon:Image;
 		private var freezingTurretIcon:Image;
 		private var vemonTurretIcon:Image;
+		private var removeIcon:Image;
 		
 		private var houseOfFlyingBadgersIcon:Image;
 		
@@ -94,9 +95,9 @@ package UiClasses
 				case 8: graphic = houseOfFlyingBadgersIcon;
 					
 				break;
-				/*default:
-					
-				break;*/
+				default:
+						graphic = removeIcon;
+				break;
 			}
 		}
 		
