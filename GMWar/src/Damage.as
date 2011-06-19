@@ -76,6 +76,10 @@ package
             {
                 return 0;
             }
+            if(type=="SLOW")
+            {
+                return 0;
+            }
             return damage;
         }
         
