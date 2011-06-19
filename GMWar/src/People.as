@@ -13,15 +13,9 @@ package
 	
 	public class People extends Entity
 	{
-		[Embed(source = 'Asserts/runningNormalInv.png')]
-		private const PLAYERRUN:Class;
-		private var imageRun:Spritemap = new Spritemap(PLAYERRUN, 74, 108); 
-        [Embed(source = 'Asserts/climbingInv.png')]
-		private const PLAYERCLIMB:Class;
-		private var imageClimb:Spritemap = new Spritemap(PLAYERCLIMB, 74, 108); 
-        [Embed(source = 'Asserts/fallingInv.png')]
-		private const PLAYERFALL:Class;
-		private var imageFall:Spritemap = new Spritemap(PLAYERFALL, 74, 108); 
+		[Embed(source = 'Asserts/personS.png')]
+		private const PLAYER:Class;
+		private var image:Spritemap = new Spritemap(PLAYER, 37, 54); 
 		private var dead:Boolean;
 		private var trapOn:int;
 		public var flyingProp:Number;
@@ -39,6 +33,7 @@ package
         private var curTrap:Trap;
         
         private var cableHeight:int;
+        private var cableHeightTrue:int;
 
         public var xTrue:Number;
         private var yTrue:Number;
@@ -50,19 +45,12 @@ package
 		
 		public function People(xPos:int = 0, yPos:int = 200) 
 		{
-			imageRun.scale = 0.5;
-			imageRun.add("run", [ 0, 1, 2, 3, 4], 15, true);
-            imageRun.y = -54;
-            imageRun.x = -36;
-            imageClimb.scale = 0.5;
-			imageClimb.add("run", [ 0, 1, 2, 3, 4], 15, true);
-            imageClimb.y = -54;
-            imageClimb.x = -36;
-            imageFall.scale = 0.5;
-			imageFall.add("run", [ 0, 1, 2, 3, 4], 15, true);
-            imageFall.y = -54;
-            imageFall.x = 0;
-			graphic = imageRun;
+			image.add("run", [ 0, 1, 2, 3, 4], 15, true);
+            image.add("fall", [ 5, 6, 7, 8, 9], 15, true);
+            image.add("climb", [ 10, 11, 12, 13, 14], 15, true);
+            image.y = -54;
+            image.x = -36;
+			graphic = image;
 			x = xPos as Number;
             xTrue = x;
 			y = yPos;
@@ -86,10 +74,10 @@ package
 
             curTrap = null;
 
-			imageRun.play("run");
+			image.play("run");
             moveState = "Walking"
 			
-			poisonEffect = new Poisoned(x-37, y-imageRun.scaledHeight, this);
+			poisonEffect = new Poisoned(x-37, y-image.height, this);
 		}
 		
 		private function AtEnd():void
@@ -99,7 +87,7 @@ package
 		
 		public function onTrap():void
         {
-            var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(x)      
+            var trapNew:Trap = (FP.world as Environment).trapMgr.trapAt(xTrue)      
             if(trapNew==curTrap)
             {
                 if(curTrap!=null)
@@ -145,26 +133,19 @@ package
             var gSpeed:Number = speed;
             for each(var dam:Damage in damages)
             {
-                if(!dam.isIce() || !armourI)
-                {
-                    gSpeed = dam.slows()
-                }
+                gSpeed = gSpeed*dam.slows()
             }
             return gSpeed;
         }
     
         public function flipAni():void
         {
-            if(imageRun.rate==0)
+            if(image.rate==0)
             {
-                imageRun.rate=1;
-                imageClimb.rate=1;
-                imageFall.rate=1;
+                image.rate=1;
             }else
             {
-                imageRun.rate=0;
-                imageClimb.rate=0;
-                imageFall.rate=0;
+                image.rate=0;
             }
         }
 		
@@ -229,21 +210,20 @@ package
 
         public function startWalking():void
         {
-            graphic = imageRun;
-            imageRun.play("run")
+            image.play("run")
             moveState = "Walking";
         }
 
         public function climbing():void
         {
             yTrue -= (speed + (speed*climbProp))*0.15;
-            if(yTrue<(-curTrap.tHeight+floor()+50))
+            if(yTrue<cableHeightTrue+50)
             {
-                yTrue = -curTrap.tHeight+floor()
+                yTrue = cableHeightTrue;
                 xTrue += 25
-                if(xTrue>(curTrap.x+curTrap.tWidth-curTrap.rRap))
+                if(xTrue>(curTrap.xTrue+curTrap.tWidth-curTrap.rRap))
                 {
-                    xTrue = curTrap.x+curTrap.tWidth-curTrap.rRap
+                    xTrue = curTrap.xTrue+curTrap.tWidth-curTrap.rRap
                 }
                 startWalking();
             }
@@ -251,10 +231,10 @@ package
 
         public function startClimbing():void
         {
-            graphic = imageClimb;
-            imageClimb.play("run")
+            image.play("climb")
             moveState = "Climbing";
-            x += curTrap.lRap
+            xTrue += curTrap.lRap
+            cableHeightTrue = floor()-curTrap.tHeight;
         }
 
         public function falling():void
@@ -265,16 +245,17 @@ package
                 yTrue = floor()
                 xTrue += 36;
                 startWalking();
+                image.x = -37;
             }
         }
 
         public function startFalling():void
         {
-            graphic = imageFall;
-            imageFall.play("run")
+            image.play("fall")
             moveState = "Falling";
-            cableHeight = yTrue;
+            cableHeightTrue = yTrue;
             yTrue += 50;
+            image.x = 0
         }
 
         public function flying():void
@@ -287,10 +268,10 @@ package
         public function singlerender():void
         {
             super.render();
-            //Draw.line(x,floor(),x,0,0xFFFFFF)
+            //Draw.line(x,y,x,y-100,0xFFFFFF)
             if(moveState=="Climbing")
             {
-                Draw.line(x-9,y-50,x,-curTrap.tHeight+floor(),0xFFFFFF)
+                Draw.line(x-9,y-50,x,cableHeight,0xFFFFFF)
             }
             if(moveState=="Falling")
             {
@@ -304,12 +285,14 @@ package
             {
                 x = xTrue - 800;
                 y = yTrue + (FP.world as Environment).yDiff;
+                cableHeight = cableHeightTrue + (FP.world as Environment).yDiff;
                 singlerender()
             }
             if(xTrue<850)
             {
                 x = xTrue
                 y = yTrue
+                cableHeight = cableHeightTrue
                 singlerender()
             }
         }
@@ -348,7 +331,7 @@ package
 			if (health <= 0)
 			{
 				dead = true;
-				FP.world.add(new Angel(x - 37,y - imageRun.scaledHeight));
+				FP.world.add(new Angel(x - 37,y - image.height));
 			}
         }
 
