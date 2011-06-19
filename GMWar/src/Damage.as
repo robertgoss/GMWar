@@ -73,14 +73,6 @@ package
             {
                 return 0;
             }
-            if(type=="FIRE")
-            {
-                return 0;
-            }
-            if(type=="POISON")
-            {
-                return 0;
-            }
             if(type=="SLOW")
             {
                 return 0;
