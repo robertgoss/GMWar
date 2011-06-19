@@ -21,15 +21,15 @@ package
                 breedingPool.push(randomSeq());
             }
             currentPool = [];
-            reload = 600;
+            reload = 0;
 		}
 		
 		public function update():void
 		{
             reload -= 1
-			if (reload==0 && FP.world.classCount(People) < 20)
+			if (reload<0 && FP.world.classCount(People) < 20)
 			{	
-                reload = 600;			
+                reload = 1000;			
 				addWave();
 			}
 			removeDeadPeople();
