@@ -26,6 +26,8 @@ package
         public var paused:Boolean;
 		public var ui:UI;
 
+        public var money:int;
+
         public var yDiff:int
 		
 		//Background Music
@@ -80,6 +82,8 @@ package
             Draw.line(0,floorHieght(0),800,floorHieght(800),0xFFFFFF)
             Draw.line(0,floorHieght(0)+yDiff,800,floorHieght(800)+yDiff,0xFFFFFF)
             super.render()
+
+            Draw.graphic(new Text(money.toString(),40,40))
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }

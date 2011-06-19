@@ -13,6 +13,8 @@ package traps
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
+
+        public static var price:int = 85;
         public function VemonTurret(x_:int)
         {
             super(x_)

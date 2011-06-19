@@ -13,6 +13,8 @@ package traps
 		[Embed (source = '../Asserts/pit.png')]
 		private static const IMAGE:Class;
 		private var image:Image = new Image(IMAGE);
+    
+        public static var price:int = 150;
 		
 		public function SpikePit(x_:Number) 
 		{

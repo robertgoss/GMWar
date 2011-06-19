@@ -10,6 +10,8 @@ package traps
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
+
+        public static var price:int = 100;
         public function HoverTurret(x_:int)
         {
             super(x_)

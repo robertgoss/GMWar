@@ -27,6 +27,8 @@ package
         public var xTrue:int;
         public var yTrue:int;
 
+        public static var price:int = 0;
+
         public function Trap(x_:int)
         {
             xTrue = x_;
@@ -132,6 +134,7 @@ package
                 }
             }
         } 
+      
 
         public function clean():void
         {

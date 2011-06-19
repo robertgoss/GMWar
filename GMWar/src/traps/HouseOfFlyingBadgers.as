@@ -15,6 +15,7 @@ package traps
 		private static const IMAGE:Class;
 		private var image:Image = new Image(IMAGE);
 		
+        public static var price:int = 300;
 		
 		public function  HouseOfFlyingBadgers(x_:Number) 
 		{
