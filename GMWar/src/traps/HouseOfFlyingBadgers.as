@@ -10,7 +10,7 @@ package traps
 	{
 		private var image:Image;
 		
-		public function  HouseOfFlyingBadgers() 
+		public function  HouseOfFlyingBadgers(x_:Number) 
 		{
 			graphic = image;
 			super(x_);

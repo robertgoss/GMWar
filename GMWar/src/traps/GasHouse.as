@@ -6,11 +6,11 @@ package traps
 	 * ...
 	 * @author Chris Jacobs
 	 */
-	public class GasHouse 
+	public class GasHouse extends Trap
 	{
 		private var image:Image;
 		
-		public function GasHouse() 
+		public function GasHouse(x_:Number) 
 		{
 			graphic = image;
 			super(x_);
