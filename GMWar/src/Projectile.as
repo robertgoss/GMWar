@@ -73,7 +73,7 @@ package
                     Draw.line(parent.xTrue,parent.yTrue-parent.tHeight,target[0]-20,target[1]-30)
                 }else
                 {
-                    Draw.line(parent.xTrue-800,parent.yTrue-parent.tHeight-350,target[0]-800-20,target[1]+350-30)
+                    Draw.line(parent.xTrue-800,parent.yTrue-parent.tHeight+350,target[0]-800-20,target[1]+350-30)
                 }
             }
         }
