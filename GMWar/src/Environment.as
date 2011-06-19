@@ -109,7 +109,7 @@ package
 			healthText.text = "Health: " + health.toString();
 			if (health <= 0)
 			{
-				FP.world = new Instruction();
+				//FP.world = new Instruction();
 			}
 		}
 		
