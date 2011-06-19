@@ -9,14 +9,10 @@ package Effects
 	 */
 	public class Poisoned extends Effect
 	{
-		[Embed (source = '../Asserts/poison.png')]
-		private static const IMAGE:Class
-		private var image:Stamp = new Stamp(IMAGE);
 		private var p:People;
 		
 		public function Poisoned(xPos:Number,yPos:Number, person:People) 
 		{
-			graphic = image;
 			x = xPos;
 			y = yPos;
 			p = person;

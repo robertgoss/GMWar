@@ -11,9 +11,6 @@ package traps
         [Embed(source = '../Asserts/Turret.png')]
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
-
-        public static var price:int = 85;
-
         public function FreezingTurret(x_:int)
         {
             super(x_)
@@ -22,7 +19,7 @@ package traps
 			graphic = image;
             damage = null;
             //price = 10;
-            var pDam:Damage = new Damage("ICE",0,12,1,this);
+            var pDam:Damage = new Damage("ICE",10000,0,2,this);
             projectile = new Projectile(pDam,4,1,30,this);
             airbourne = false;
             tHeight = 0;
