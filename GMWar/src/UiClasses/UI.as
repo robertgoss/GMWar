@@ -41,12 +41,12 @@ package UiClasses
 			{
 				if (i < 4)
 				{
-					buttons.push(new Button(38 + 91 + 155 * i));
+					buttons.push(new Button(38 + 91 + 155 * i, i));
 					FP.world.add(buttons[i] as Button);
 				}
 				else 
 				{
-					buttons.push(new Button(800));
+					buttons.push(new Button(800,i));
 					FP.world.add(buttons[i] as Button);
 				}
 			}
