@@ -19,10 +19,11 @@ package
         {
             for each(var trapC:Trap in traps)
             {
-                if(trap.xTrue<(trapC.xTrue+trapC.tWidth))
+                if(trap.xTrue<(trapC.xTrue+2*trapC.tWidth))
                 {
-                    if((trap.tWidth+trap.xTrue)>(trapC.xTrue-trapC.tWidth))
+                    if((2*trap.tWidth+trap.xTrue)>trapC.xTrue)
                     {
+                        trap.clean();
                         return false;
                     }
                 }
