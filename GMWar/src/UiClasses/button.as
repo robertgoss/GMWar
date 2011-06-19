@@ -10,7 +10,7 @@ package UiClasses
 	 * ...
 	 * @author David
 	 */
-	public class button extends Entity 
+	public class Button extends Entity 
 	{
 		[Embed(source = '../Asserts/buttonBlue.png')]
 		private const BUTTON:Class;
