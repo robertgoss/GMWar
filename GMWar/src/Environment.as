@@ -6,6 +6,7 @@ package
     import net.flashpunk.utils.Input;
     import net.flashpunk.utils.Key;
 	import net.flashpunk.Sfx;
+	import UiClasses.UI;
 
     import traps.Tarpit;
     import traps.FirePit;
@@ -22,6 +23,7 @@ package
 		public var trapMgr:TrapManager;
         public var peopleMgr:PeopleManager;
         public var paused:Boolean;
+		public var ui:UI;
 
         public var yDiff:int
 		
@@ -51,6 +53,8 @@ package
             trapMgr.addTrap(new Wall(350));
             trapMgr.addTrap(new TallWall(1010));
 			//music.loop();
+			
+			ui = new UI();
         }
 
         public override function update():void
@@ -65,6 +69,7 @@ package
                 peopleMgr.update()
                 trapMgr.update()
             }
+			ui.update();
         }
 
 		/*
