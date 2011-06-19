@@ -55,6 +55,7 @@ package
 			//music.loop();
 			
 			ui = new UI();
+			add(ui);
         }
 
         public override function update():void
@@ -69,7 +70,6 @@ package
                 peopleMgr.update()
                 trapMgr.update()
             }
-			ui.update();
         }
 
 		/*

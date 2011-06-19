@@ -43,6 +43,8 @@ package
                 x = xTrue - 800;
                 y = yTrue + (FP.world as Environment).yDiff;
             }
+			
+			type = "Trap";
         }
 
         public function rel_x(x:int,y:int):int

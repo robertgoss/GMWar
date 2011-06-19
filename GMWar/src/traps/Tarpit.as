@@ -1,6 +1,7 @@
 package traps
 {
-import net.flashpunk.Entity;
+	/////////////////////////Trap Number 2/////////////////////
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class Tarpit extends Trap
     {
@@ -11,7 +12,7 @@ import net.flashpunk.Entity;
         public function Tarpit(x_:int)
         {
 			graphic = image;
-			super(x_, "Fire");
+			super(x_);
             damage = new Damage("SLOW",1,25,0,this);
             price = 10;
             projectile = null;
@@ -21,6 +22,8 @@ import net.flashpunk.Entity;
             scalibility = false;
             conApply = true;
             blocking = false;
+			
+			setHitbox (image.scaledWidth, image.scaledHeight);
         }
 		
     }

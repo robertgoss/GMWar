@@ -1,31 +1,42 @@
 package UiClasses
 {
+	import adobe.utils.CustomActions;
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import flash.events.MouseEvent;
 	import net.flashpunk.graphics.Text;
+	import net.flashpunk.utils.Input;
 
 	/**
 	 * ...
 	 * @author David
 	 */
-	public class UI
+	public class UI extends Entity
 	{		
-		public static var currentFocus:int = -1;
-		public static var roledOver:int = -1;
-		
+		// Button moving
 		private var scrolling:int = 0;
 		private var buttons:Array;
 		private var t:Number = 0;
 		private var arrayPosition:int;
 		
+		// Details information		
+		public static var currentFocus:int = -1;
+		//public static var roledOver:int = -4;
+		//private var seq:Array;
+		
+		// Drawing
+		public var details:Text;
+		
 		public function UI() 
 		{
+			super();
+			setHitbox(1, 1);
 			// Add buttons to screen //////////////////////////////////////////////
 			FP.world.add(new Scroll(0, true, scrollL));
 			FP.world.add(new Scroll(762, false, scrollR));
 			buttons = [];
 			arrayPosition = 0;
+			
 			for (var i:int = 0; i < 6; i++)
 			{
 				if (i < 4)
@@ -39,6 +50,10 @@ package UiClasses
 					FP.world.add(buttons[i] as Button);
 				}
 			}
+			details = new Text("", 640, 365, 146, 220);
+			details.x = 640;
+			details.y = 365;
+			addGraphic(details);
 		}
 		
 		public function scrollL():void
@@ -57,7 +72,7 @@ package UiClasses
 			}
 		}
 		
-		public function update():void
+		public override function update():void
 		{
 			if (scrolling < 0)
 			{
@@ -169,14 +184,21 @@ package UiClasses
 					}
 					
 					(buttons[(arrayPosition + 4) % buttons.length] as Button).x = 784 - 190 * (1 - Math.cos(Math.PI * t))/2.0;
-				}
-				
+				}				
 			}
-		}
-		
-		public function get():void 
-		{
-			
+			/*
+			var atMouse:Entity = collide("Soldier", Input.mouseX, Input.mouseY);
+			if (atMouse != null)
+			{
+				roledOver = -1;
+				seq = (atMouse[0] as People).getSeq();
+				details.text = "Soldier Skills\nSpeed: " + seq[1] + "\nClimbing: " + seq[2] + "\nArmour" + seq[3];				
+			}
+			else
+			{
+				roledOver = -4;
+				details.text = "";
+			}*/
 		}
 		
 	}	

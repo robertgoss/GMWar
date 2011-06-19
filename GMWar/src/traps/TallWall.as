@@ -1,6 +1,7 @@
 package traps
 {
-import net.flashpunk.Entity;
+	/////////////////////////Trap Number 1/////////////////////
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
     public class TallWall extends Trap
     {
@@ -23,6 +24,8 @@ import net.flashpunk.Entity;
             blocking = true;
             lRap = 6
             rRap = -5
+			
+			setHitbox (image.scaledWidth,-image.scaledHeight);
         }
     }
 }
