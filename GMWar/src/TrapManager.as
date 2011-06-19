@@ -42,6 +42,7 @@ package
 
         public function removeTrap(trap:Trap):void
         { 
+            (FP.world as Environment).money += trap.getClass().price
             trap.clean();
 		    FP.world.remove(trap);
             getTraps();
