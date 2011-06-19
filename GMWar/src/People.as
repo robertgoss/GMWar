@@ -431,7 +431,7 @@ package
             if(hDelta!=0)
             {
                 //yTrue += 10
-                FP.world.add(new Hurt(x+20,y-60,hDelta))
+                FP.world.add(new Hurt(x-20,y-65,hDelta))
             }
             damages = newDamages;
         }      

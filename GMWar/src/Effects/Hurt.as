@@ -15,7 +15,7 @@ package  Effects
         public override function update():void
         {
             dur = dur-1;
-            y += 1;
+            y -= 1;
             if(dur<0)
             {
                 FP.world.remove(this);
