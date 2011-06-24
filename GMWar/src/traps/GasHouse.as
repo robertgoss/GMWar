@@ -22,7 +22,7 @@ package traps
 			graphic = image;
 			super(x_);
 
-            damage = new Damage("GAS",1,8,5,this);
+            damage = new Damage("GAS",1,10,5,this);
             //price = 10;
             projectile = null;
             airbourne = false;

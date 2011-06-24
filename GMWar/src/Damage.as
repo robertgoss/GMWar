@@ -19,7 +19,7 @@ package
             dur = dur_;
             damage = damage_;
             target = target_;
-            prob = prob_
+            prob = prob_;
         }
 
         public function slows():Number
