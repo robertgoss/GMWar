@@ -153,5 +153,8 @@ package
                 }
             }
         } 
+		
+		// TEMP!!!
+		public var tempType:String = "";
     }
 }   

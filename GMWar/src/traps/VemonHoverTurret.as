@@ -8,17 +8,17 @@ package traps
 	import Effects.Gas;
     public class VemonHoverTurret extends Trap
     {
-        [Embed(source = '../Asserts/Turret.png')]
+        [Embed(source = '../Asserts/TurretA.png')]
 		private const PLAYER:Class;
-		private var image:Spritemap = new Spritemap(PLAYER,10,10);
+		private var image:Spritemap = new Spritemap(PLAYER,25,19);
 
         public static var price:int = 125;
 
         public function VemonHoverTurret(x_:int)
         {
             super(x_)
-            image.y = -10;
-            image.x = 0;
+            image.y = -19;
+            image.x = -7;
 			graphic = image;
             damage = null;
             //price = 10;

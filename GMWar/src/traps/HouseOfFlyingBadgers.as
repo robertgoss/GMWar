@@ -34,6 +34,8 @@ package traps
 			effects.push(new Badger(x+image.width/2, y-image.height + 14));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
 			layer = -1;
+			// TEMP!!!
+			tempType = "h";
 		}
 		
 	}

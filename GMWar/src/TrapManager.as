@@ -25,21 +25,26 @@ package
             (FP.world as Environment).money -= trap.getClass().price;
             if(!trap.airbourne)
             {
-            for each(var trapC:Trap in traps)
-            {
-                if(!trapC.airbourne)
-                {
-                if(trap.xTrue<(trapC.xTrue+2*trapC.tWidth))
-                {
-                    if((2*trap.tWidth+trap.xTrue)>trapC.xTrue)
-                    {
-                        trap.clean();
-                        return false;
-                    }
-                }
-                }
+				for each(var trapC:Trap in traps)
+				{
+					if(!trapC.airbourne)
+					{
+					if(trap.xTrue<(trapC.xTrue+2*trapC.tWidth))
+					{
+						if((2*trap.tWidth+trap.xTrue)>trapC.xTrue)
+						{
+							trap.clean();
+							return false;
+						}
+					}
+					}
+				}
             }
-            }
+			// TEMP!!!
+			if ( trap.tempType == "h" )
+			{
+				trace ("h");
+			}
             FP.world.add(trap);
             traps.push(trap);
             return true;
