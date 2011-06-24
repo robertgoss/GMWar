@@ -151,11 +151,15 @@ package
             }
             if(curTrap.scalibility)
             {
-                if(FP.rand(15)<climbProp)
-                {
-                    startClimbing();
-                    return false;
-                }
+				if (!(curTrap.damage.type == "FIRE" && armourF) &&
+					!(curTrap.damage.type == "POISON" && armourP))
+				{
+					if(FP.rand(15)<climbProp)
+					{
+						startClimbing();
+						return false;
+					}
+				}
             }
             return true;
         }

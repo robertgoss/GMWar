@@ -91,7 +91,7 @@ package
             }   
             for(i=0;i<8;i++)
             {
-                trace(i,seq[i]);
+                //trace(i,seq[i]);
                 seq[i] = 32 * seq[i] / s;
             }
             return seq;
