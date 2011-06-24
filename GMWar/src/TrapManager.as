@@ -34,6 +34,7 @@ package
 						if((2*trap.tWidth+trap.xTrue)>trapC.xTrue)
 						{
 							trap.clean();
+							removeTrap (trap);
 							return false;
 						}
 					}

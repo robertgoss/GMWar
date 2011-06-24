@@ -29,10 +29,12 @@ package
         public var peopleMgr:PeopleManager;
         public var paused:Boolean;
 		public var ui:UI;
+		public var dieing:Boolean;
 
         public var money:int;
 
         public var yDiff:int
+		private var intro:Intro;
 		
 		//Background Music
 		[Embed (source = 'Asserts/BackgroundMusic.mp3')]
@@ -57,6 +59,7 @@ package
 			addGraphic(healthText);
             money = 1000;
             music.loop();
+			dieing = false;
 		}
 
         public override function begin():void
@@ -74,6 +77,10 @@ package
 
         public override function update():void
         {
+			if (dieing)
+			{
+				FP.world = new Intro();
+			}
             super.update()
             if(Input.pressed(Key.P))
             {
@@ -109,7 +116,9 @@ package
 			healthText.text = "Health: " + health.toString();
 			if (health <= 0)
 			{
-				FP.world = new Intro();
+				music.stop();
+				FP.world.removeAll();
+				dieing = true;
 			}
 		}
 		

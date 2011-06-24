@@ -14,9 +14,9 @@ package UiClasses
 	public class UI extends Entity
 	{		
 		// Button moving
-		private var scrolling:int = 0;
+		private var scrolling:int;
 		private var buttons:Array;
-		private var t:Number = 0;
+		private var t:Number;
 		private var arrayPosition:int;
 		
 		// Details information		
@@ -36,6 +36,8 @@ package UiClasses
 			FP.world.add(new Scroll(762, false, scrollR));
 			buttons = [];
 			arrayPosition = 0;
+			scrolling = 0;
+			t = 0;
 			
 			for (var i:int = 0; i < 19; i++)
 			{
@@ -97,7 +99,7 @@ package UiClasses
 				{
 					for (i = 0; i < 3; i++)
 					{
-						(buttons[arrayPosition+i] as Button).x = 129 + 155 * i - (190 + 155 * 3) * (1 - Math.cos(Math.PI * t)) / 2.0;
+						(buttons[(arrayPosition+i)% buttons.length] as Button).x = 129 + 155 * i - (190 + 155 * 3) * (1 - Math.cos(Math.PI * t)) / 2.0;
 					}
 					
 					(buttons[(arrayPosition + 3) % buttons.length] as Button).x = 38 + 91 + 155 * 3 - 155 * 3 * (1 - Math.cos(Math.PI * t))/2.0;

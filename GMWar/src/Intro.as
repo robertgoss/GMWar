@@ -31,7 +31,6 @@ package
 
         public var yDiff:int
 		
-		
 		[Embed (source = 'Asserts/Intro.png')]
 		private static const BACKGROUND:Class
 		private var background:Image = new Image(BACKGROUND);
