@@ -22,12 +22,12 @@ package traps
 			image.y = -image.height;
 			graphic = image;
 			super(x_);
-            damage = new Damage("NORMAL",1,8,5,this);
+            damage = new Damage("NORMAL",1,8,3,this);
             //price = 10;
             projectile = null;
             airbourne = false;
-            tHeight = 40;
-            tWidth = 40;
+            tHeight = 65;
+            tWidth = 74;
             scalibility = true;
             conApply = true;
             blocking = false;

@@ -125,7 +125,7 @@ package
 
         public function onTrap(person:People):void
         {
-            if(conApply && damage!=null)
+            if(conApply && damage!=null && !person.movingOver)
             {
                 if(FP.rand(damage.prob)==0)
                 {
@@ -145,7 +145,7 @@ package
 
         public function onTrapFirst(person:People):void
         {
-            if(damage!=null)
+            if(damage!=null && !person.movingOver)
             {
                 if(FP.rand(damage.prob)==0)
                 {

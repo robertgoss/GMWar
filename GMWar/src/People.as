@@ -42,6 +42,7 @@ package
         public var armourP:Boolean;
 		public var health:Number;
         public var moveState:String;
+		public var movingOver:Boolean;
 		//Resistance
         private var damages:Array;
 
@@ -76,6 +77,8 @@ package
             xTrue = x;
 			y = yPos;
             yTrue = y;
+			
+			movingOver = true;
 
             imageHat.add("spin", [ 0, 1], 15, true);
             imageHat.play("spin")
@@ -273,6 +276,7 @@ package
             image.play("climb")
             imageM.play("climb")
             moveState = "Climbing";
+			movingOver = true;
             xTrue += curTrap.lRap
             cableHeightTrue = floor()-curTrap.tHeight;
 			setHitbox(15, 14, 36, 54);
@@ -288,6 +292,7 @@ package
                 startWalking();
                 image.x = -37;
                 imageM.x = -37
+				movingOver = false;
             }
         }
 
@@ -312,6 +317,7 @@ package
                 {
                     yTrue = floor()
                     startWalking()
+					movingOver = false;
                 }
             }else
             {
