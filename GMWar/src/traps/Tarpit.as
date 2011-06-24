@@ -23,6 +23,8 @@ package traps
             scalibility = false;
             conApply = true;
             blocking = false;
+			groundUtility = 40;
+			airUtility = 0;
 			
 			setHitbox (image.scaledWidth, image.scaledHeight);
         }

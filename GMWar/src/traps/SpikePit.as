@@ -21,17 +21,19 @@ package traps
 			graphic = image;
 			super(x_);
 
-            damage = new Damage("NORMAL",1,12,4,this);
+            damage = new Damage("NORMAL",1,4,3,this);
             //price = 10;
             projectile = null;
             airbourne = false;
             tHeight = 0;
-            tWidth = 40;
+            tWidth = 80;
             scalibility = false;
             conApply = true;
             blocking = false;
 			effects.push(new Spike(rel_x(x, y), rel_y(x, y)));
 			setHitbox (image.scaledWidth, image.scaledHeight);
+			groundUtility = 60;
+			airUtility = 0;
 		}
 		
 	}

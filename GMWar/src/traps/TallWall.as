@@ -26,6 +26,8 @@ package traps
             blocking = true;
             lRap = 6
             rRap = -5
+			groundUtility = 80;
+			airUtility = 0;
 			
 			setHitbox (image.scaledWidth,-image.scaledHeight);
         }

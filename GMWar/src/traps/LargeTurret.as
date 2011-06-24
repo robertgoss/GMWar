@@ -7,9 +7,9 @@ package traps
     import net.flashpunk.graphics.Spritemap;
     public class LargeTurret extends Trap
     {
-        [Embed(source = '../Asserts/Turret.png')]
+        [Embed(source = '../Asserts/TurretB.png')]
 		private const PLAYER:Class;
-		private var image:Spritemap = new Spritemap(PLAYER,10,10);
+		private var image:Spritemap = new Spritemap(PLAYER,20,10);
     
         public static var price:int = 100;        
 
@@ -17,13 +17,13 @@ package traps
         {
             super(x_)
             image.y = -19;
-            image.x = 0;
+            image.x = -5;
 			image.scale = 2.0;
 			graphic = image;
             damage = null;
             //price = 10;
-            var pDam:Damage = new Damage("Normal",0,20,1,this);
-            projectile = new Projectile(pDam,80,1,30,this);
+            var pDam:Damage = new Damage("Normal",0,500,1,this);
+            projectile = new Projectile(pDam,160,1,30,this);
             airbourne = false;
             tHeight = 0;
             tWidth = 10;

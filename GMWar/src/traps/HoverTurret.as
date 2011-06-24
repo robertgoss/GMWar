@@ -11,7 +11,7 @@ package traps
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,25,19);
 
-        public static var price:int = 100;
+        public static var price:int = 75;
         public function HoverTurret(x_:int)
         {
             super(x_)
@@ -32,6 +32,8 @@ package traps
             rRap = -5
 			yTrue -= 100;
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 60;
+			airUtility = 60;
         }
     }
 	

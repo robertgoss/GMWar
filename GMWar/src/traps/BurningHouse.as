@@ -19,9 +19,10 @@ package traps
 		public function BurningHouse(x_:Number) 
 		{
 			image.y = -image.height;
+			image.x = -3;
 			graphic = image;
 			super(x_);
-            damage = new Damage("FIRE",1,10,3,this);
+            damage = new Damage("FIRE",1,12,3,this);
             //price = 10;
             projectile = null;
             airbourne = false;
@@ -34,6 +35,8 @@ package traps
 			effects.push(new Fire(x+47, y-20));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
 			layer = -1;
+			groundUtility = 120;
+			airUtility = 0;
 		}
 		
 	}

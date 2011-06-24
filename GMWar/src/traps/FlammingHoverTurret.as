@@ -12,7 +12,7 @@ package traps
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,25,19);
 
-        public static var price = 125;
+        public static var price = 90;
         public function FlammingHoverTurret(x_:int)
         {
             super(x_)
@@ -34,6 +34,8 @@ package traps
 			yTrue -= 100;
 			effects.push(new Fire(x-3, y-105));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 70;
+			airUtility = 70;
         }
     }
 	

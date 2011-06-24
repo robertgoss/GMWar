@@ -20,14 +20,18 @@ package traps
 			{
 				effects.push(new Fire(rel_x(x-2 + i*10, y),rel_y(x-2 + i*10, y)))
 			}
-            damage = new Damage("FIRE",1,8,0,this);
+            damage = new Damage("FIRE",1,5,3,this);
             projectile = null;
             airbourne = false;
             tHeight = 0;
-            tWidth = 40;
+            tWidth = 80;
             scalibility = false;
             conApply = true;
             blocking = false;
+			groundUtility = 100;
+			airUtility = 0;
+			groundUtility = 80;
+			airUtility = 0;
 			
 			setHitbox (image.scaledWidth, image.scaledHeight);
         }

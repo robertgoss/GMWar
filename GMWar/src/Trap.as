@@ -22,6 +22,10 @@ package
         public var lRap:int;
         public var rRap:int;
 		public var effects:Array;
+		
+		// The relative affectiveness of the trap on the ground or in the air
+		public var groundUtility;
+		public var airUtility;
 
         public var xTrue:int;
         public var yTrue:int;

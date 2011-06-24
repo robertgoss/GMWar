@@ -11,7 +11,7 @@ package traps
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
 
 
-        public static var price:int = 75;
+        public static var price:int = 60;
         public function Turret(x_:int)
         {
             super(x_)
@@ -32,6 +32,8 @@ package traps
             rRap = -5
 			
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 60;
+			airUtility = 50;
         }
     }
 }

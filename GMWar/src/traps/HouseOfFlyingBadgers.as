@@ -15,11 +15,12 @@ package traps
 		private static const IMAGE:Class;
 		private var image:Image = new Image(IMAGE);
 		
-        public static var price:int = 300;
+        public static var price:int = 200;
 		
 		public function  HouseOfFlyingBadgers(x_:Number) 
 		{
 			image.y = -image.height;
+			image.x = -3;
 			graphic = image;
 			super(x_);
             damage = new Damage("NORMAL",1,8,3,this);
@@ -34,6 +35,8 @@ package traps
 			effects.push(new Badger(x+image.width/2, y-image.height + 14));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
 			layer = -1;
+			groundUtility = 100;
+			airUtility = 0;
 			// TEMP!!!
 			tempType = "h";
 		}

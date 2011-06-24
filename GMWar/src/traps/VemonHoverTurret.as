@@ -35,6 +35,8 @@ package traps
 			yTrue -= 100;
 			effects.push(new Gas(x-3, y-105));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 70;
+			airUtility = 70;
         }
     }
 	

@@ -13,7 +13,7 @@ package traps
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
 
-        public static var price = 125;
+        public static var price = 80;
         public function FlammingTurret(x_:int)
         {
             super(x_)
@@ -34,6 +34,8 @@ package traps
             rRap = -5
 			effects.push(new Fire(x-3, y-5));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 70;
+			airUtility = 60;
         }
     }
 	

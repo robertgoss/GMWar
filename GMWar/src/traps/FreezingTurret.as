@@ -12,7 +12,7 @@ package traps
 		private const PLAYER:Class;
 		private var image:Spritemap = new Spritemap(PLAYER,10,10);
 
-        public static var price = 125;
+        public static var price = 60;
         public function FreezingTurret(x_:int)
         {
             super(x_)
@@ -33,6 +33,8 @@ package traps
             rRap = -5
 			effects.push(new Cold(x-3, y-5));
 			setHitbox (image.scaledWidth, -image.scaledHeight);
+			groundUtility = 30;
+			airUtility = 0;
         }
     }
 	
