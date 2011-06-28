@@ -55,7 +55,7 @@ package
             yDiff = 350;
             //Add Floor
 			addGraphic(background, 0);
-			healthText = new Text("Health: " + health.toString(), 480, 50);
+			healthText = new Text("Health: " + health.toString(), 700, 0);
 			addGraphic(healthText);
             money = 1000;
             music.loop();
@@ -100,7 +100,7 @@ package
             Draw.line(0,floorHieght(0)+yDiff,800,floorHieght(800)+yDiff,0xFFFFFF)
             super.render()
 
-            Draw.graphic(new Text(money.toString(),40,40))
+            Draw.graphic(new Text("Money: " + money.toString(),0,0))
             //Draw.line(200,floorHieght(0),200,0,0xFFFFFF)
             //Draw.line(350,floorHieght(0),350,0,0xFFFFFF)
         }
